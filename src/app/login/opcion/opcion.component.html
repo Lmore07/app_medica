@@ -1,0 +1,23 @@
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+      <h2 class="active"> Opciones de registro </h2>
+  
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <img src="assets/img/MediLogo2.png" id="icon" alt="Icon"/>
+      </div>
+      <a [routerLink]="['/']"><strong> Volver a la página principal</strong></a>
+      <form>
+        <div>
+        <a  [routerLink]="['/doctor']">
+            <input type="submit" class="fadeIn fourth" value="Registrarse como Doctor">
+          </a> 
+          <a [routerLink]="['/paciente']">
+            <input type="submit" class="fadeIn fourth" value="Registrarse como Paciente">
+          </a> 
+        <p>¿Ya tienes un perfil personal? <a [routerLink]="['/login']"><strong>Iniciar sesión</strong></a></p>
+    </div>
+      </form>
+    </div>
+  </div>
+
