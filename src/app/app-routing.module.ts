@@ -8,7 +8,7 @@ import { DoctorComponent } from './login/doctor/doctor.component';
 
 const routes: Routes = [
   { path: 'opciones', component: OpcionComponent },
-  { path: 'inici', component: InicioComponent },
+  { path: 'inicio', component: InicioComponent },
   { path: 'doctor', component: DoctorComponent },
   { path: 'paciente', component: PacienteComponent },
   { path: 'login', component: LoginComponent },
