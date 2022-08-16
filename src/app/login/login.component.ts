@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     }
     //Campos llenos
     if (this.submitted) {
-      this.user_service.registro(this.loginForm.value).subscribe(resp => {
+      this.user_service.login(this.loginForm.value).subscribe(resp => {
         console.log(resp);
         if(resp.estado){
           alert('Login exitoso');
