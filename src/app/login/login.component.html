@@ -1,0 +1,25 @@
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+      <h2 class="active"> Iniciar sesión </h2>
+  
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <img src="assets/img/MediLogo2.png" id="icon" alt="Icon"/>
+      </div>
+      <a [routerLink]="['/']"><strong> Volver a la página principal</strong></a>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <input formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"  type="text" id="login" class="fadeIn second" name="login" placeholder="Ingrese su correo electrónico">
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback" id="error">
+            <div *ngIf="f.email.errors.required">*El correo electrónico es obligatorio</div>
+            <div *ngIf="f.email.errors.email">*El correo electrónico debe ser válido</div>
+         </div>
+        <input formControlName="password"[ngClass]="{ 'is-invalid': submitted && f.password.errors }" type="password" id="password" class="fadeIn third" name="login" placeholder="Contraseña">
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">*La contraseña es obligatoria</div>
+         </div>
+        <input type="submit" class="fadeIn fourth" value="Iniciar">
+        <p>¿Eres nuevo en este sitio? <a [routerLink]="['/opciones']"><strong> Regístrate</strong></a></p>
+      </form>
+    </div>
+  </div>
+	
