@@ -1,36 +1,49 @@
-import { FormControl,FormGroup,Validators,FormBuilder } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  Validators,
+  FormBuilder,
+} from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { UsuarioService } from '../servicios/usuario.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  loginForm : any = FormGroup;
+
+  loginForm: any = FormGroup;
   submitted = false;
-  constructor( private formBuilder: FormBuilder){}
+  constructor(private formBuilder: FormBuilder, private user_service:UsuarioService) {}
   //Agregar acciones del formulario del usuario
-  get f() { return this.loginForm.controls; }
+  get f() {
+    return this.loginForm.controls;
+  }
+
   onSubmit() {
-    
     this.submitted = true;
     // Detenerse si el formulario no es válido
     if (this.loginForm.invalid) {
-        return;
+      return;
     }
     //Campos llenos
-    if(this.submitted)
-    {
-      alert("Sesión iniciada!!");
-    }
-   
-  }
-    ngOnInit() {
-      
-      this.loginForm= this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]]
+    if (this.submitted) {
+      this.user_service.registro(this.loginForm.value).subscribe(resp => {
+        console.log(resp);
+        if(resp.estado){
+          alert('Login exitoso');
+        }else{
+          alert('Error al iniciar');
+        }
       });
     }
   }
+  ngOnInit() {
+    this.loginForm = this.formBuilder.group({
+      usuario: ['', [Validators.required, Validators.email]],
+      clave: ['', [Validators.required]],
+    });
+  }
+}

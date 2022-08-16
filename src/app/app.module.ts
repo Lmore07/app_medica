@@ -9,6 +9,8 @@ import { LoginComponent } from './login/login.component';
 import { DoctorComponent } from './login/doctor/doctor.component';
 import { OpcionComponent } from './login/opcion/opcion.component';
 import { PacienteComponent } from './login/paciente/paciente.component';
+import { HttpClientModule } from '@angular/common/http';
+
 const routes: Routes = [
   { path: 'opciones', component: OpcionComponent },
   { path: 'inici', component: InicioComponent },
@@ -29,6 +31,7 @@ const routes: Routes = [
     OpcionComponent
   ],
   imports: [
+    HttpClientModule, 
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule
