@@ -6,7 +6,7 @@
       <div class="fadeIn first">
         <img src="assets/img/MediLogo2.png" id="icon" alt="Icon"/>
       </div>
-      <a [routerLink]="['/']"><strong> Volver a la página principal</strong></a>
+      <a [routerLink]="['/']"><strong><i class='bx bxs-left-arrow'></i>Página principal</strong></a>
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <input formControlName="usuario" [ngClass]="{ 'is-invalid': submitted && f.usuario.errors }"  type="text" id="usuario" class="fadeIn second" name="usuario" placeholder="Ingrese su correo electrónico">
         <div *ngIf="submitted && f.usuario.errors" class="invalid-feedback" id="error">
@@ -17,7 +17,7 @@
         <div *ngIf="submitted && f.clave.errors" class="invalid-feedback">
             <div *ngIf="f.clave.errors.required">*La contraseña es obligatoria</div>
          </div>
-        <input type="submit" class="fadeIn fourth" value="Iniciar">
+        <input type="submit" class="fadeIn fourth" value="Iniciar" [routerLink]="['/navbar']">
         <p>¿Eres nuevo en este sitio? <a [routerLink]="['/opciones']"><strong> Regístrate</strong></a></p>
       </form>
     </div>

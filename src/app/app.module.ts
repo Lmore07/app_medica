@@ -10,6 +10,12 @@ import { DoctorComponent } from './login/doctor/doctor.component';
 import { OpcionComponent } from './login/opcion/opcion.component';
 import { PacienteComponent } from './login/paciente/paciente.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NavbarComponent } from './navbar/navbar.component';
+import { CitasComponent } from './navbar/citas/citas.component';
+import { MenuComponent } from './navbar/menu/menu.component';
+import { VercitasComponent } from './navbar/vercitas/vercitas.component';
+import { HistoriaComponent } from './navbar/citas/historia/historia.component';
+import { VerhistoriasComponent } from './navbar/vercitas/verhistorias/verhistorias.component';
 
 const routes: Routes = [
   { path: 'opciones', component: OpcionComponent },
@@ -28,7 +34,7 @@ const routes: Routes = [
     LoginComponent,
     DoctorComponent,
     PacienteComponent, 
-    OpcionComponent
+    OpcionComponent, NavbarComponent, CitasComponent, MenuComponent, VercitasComponent, HistoriaComponent, VerhistoriasComponent
   ],
   imports: [
     HttpClientModule, 

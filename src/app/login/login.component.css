@@ -266,3 +266,11 @@ html {
   * {
     box-sizing: border-box;
   }
+  a strong {
+    font-size: 18px;
+    text-align: center;
+    width: 35px;
+    height: 15px;
+  }
+   
+   

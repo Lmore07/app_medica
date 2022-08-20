@@ -262,9 +262,12 @@ html {
   *:focus {
       outline: none;
   } 
-  
- 
-  
   * {
     box-sizing: border-box;
+  }
+  a strong {
+    font-size: 16px;
+    text-align: center;
+    width: 35px;
+    height: 15px;
   }

@@ -4,9 +4,8 @@ html {
   
   body {
     font-family: "Poppins", sans-serif;
-    height: 250vh;
+    padding-top: 2px;
   }
-  
   a {
     color: #448E7E;
     display:inline-block;
@@ -33,20 +32,14 @@ html {
     align-items: center;
     flex-direction: column; 
     justify-content: center;
-    width: 100%;
-    min-height: 100%;
-    padding: 5px;
   }
   
   #formContent {
     -webkit-border-radius: 10px 10px 10px 10px;
     border-radius: 10px 10px 10px 10px;
     background: #fff;
-    padding: 30px;
-    width: 100%;
-    max-width: 750px;
-    position: relative;
-    padding: 0px;
+    width: 97%;
+    position: static;
     -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     text-align: center;
@@ -55,7 +48,6 @@ html {
   #formFooter {
     background-color: #f6f6f6;
     border-top: 1px solid #dce8f1;
-    padding: 15px;
     text-align: center;
     -webkit-border-radius: 0 0 10px 10px;
     border-radius: 0 0 10px 10px;
@@ -113,7 +105,7 @@ html {
     transform: scale(0.95);
   }
   
-  input[type=text], input[type=password], input[type=date]  {
+  input[type=text], input[type=password], input[type=date], input[type=time], select, textarea {
     background-color: #f6f6f6;
     border: none;
     color: #0d0d0d;
@@ -149,8 +141,8 @@ html {
   }
   
   img {
-      max-width: 30%;
-      max-height: 50%;
+      max-width: 10%;
+      max-height: 10%;
      }
   
   /* ANIMATIONS */
@@ -254,21 +246,18 @@ html {
   .underlineHover:hover:after{
     width: 100%;
   }
-  
-  
-  
   /* OTHERS */
   
   *:focus {
       outline: none;
   } 
-  
- 
-  
   * {
     box-sizing: border-box;
   }
-  a strong {
+  textarea {
+    resize: none;
+}
+a strong {
     font-size: 18px;
     text-align: center;
     width: 35px;

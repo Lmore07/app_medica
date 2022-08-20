@@ -1,0 +1,113 @@
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <h2 class="active"> Crear Historia Clínica </h2>
+
+        <!-- Icon -->
+        <div class="fadeIn first">
+            <img src="assets/img/MediLogo2.png" id="icon" alt="Icon" />
+
+        </div>
+        <a [routerLink]="['/menu']"><strong><i class='bx bxs-left-arrow'></i>Volver al menú</strong></a><br><br>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-md-4">
+                    <label>N° de Expediente</label>
+                    <input formControlName="expediente" [ngClass]="{ 'is-invalid': submitted && f.expediente.errors}" type="text" id="expediente" class="fadeIn second" name="expediente" maxlength="10">
+                    <div *ngIf="submitted && f.expediente.errors" class="invalid-feedback">
+                        <div *ngIf="f.expediente.errors.required">*El número de expediente es obligatoria</div>
+                     </div>
+                </div>
+                    <div class="col-md-4">
+                        <label>Cédula de identidad</label>
+                        <input formControlName="cedula" [ngClass]="{ 'is-invalid': submitted && f.cedula.errors}" type="text" id="cedula" class="fadeIn second" name="cedula" maxlength="10">
+                        <div *ngIf="submitted && f.cedula.errors" class="invalid-feedback">
+                            <div *ngIf="f.cedula.errors.required">*La cédula de identidad es obligatoria</div>
+                         </div>
+                    </div>
+                <div class="col-md-4">
+                    <label class="col-md-12">Nombres</label>
+                    <input formControlName="nombres" [ngClass]="{ 'is-invalid': submitted && f.nombres.errors}" type="text" id="nombres" class="fadeIn second" name="nombres">
+                    <div *ngIf="submitted && f.nombres.errors" class="invalid-feedback">
+                        <div *ngIf="f.nombres.errors.required">*El nombre es obligatorio</div>
+                     </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                <label class="col-md-12">Fecha de ingreso</label>
+                <input formControlName="fechaIngreso" [ngClass]="{ 'is-invalid': submitted && f.fechaIngreso.errors}" type="date" id="fechaIngreso" class="fadeIn second" name="fechaIngreso">
+                <div *ngIf="submitted && f.fechaIngreso.errors" class="invalid-feedback">
+                    <div *ngIf="f.fechaIngreso.errors.required">*La fecha de ingreso es obligatoria</div>
+                 </div>
+            </div>
+                
+                <div class="col-md-4">
+                    <label class="col-md-12">Tipo de consulta</label>
+                    <select class="custom-select">
+                        <option value="" disabled selected>Selecciona un tipo de consulta</option>
+                        <option value="1">Centro Obstétrico</option>
+                        <option value="2">Pediatría</option>
+                        <option value="3">Anastesiología</option>
+                        <option value="4">Consulta Externa</option>
+                        <option value="5">Ginecología</option>
+                        <option value="6">Traumatología</option>
+                      </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="col-md-12">Médico</label>
+                    <select class="custom-select">
+                        <option value="" disabled selected>Selecciona un médico</option>
+                        <option value="1">Giovanni Alejandro Escorza Velez</option>
+                        <option value="2">Patricia Alexandra Andrade Carrera</option>
+                        <option value="3">Fabian Edgar Vasconez Muñoz</option>
+                      </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="col-md-12">Peso</label>
+                    <input formControlName="peso" [ngClass]="{ 'is-invalid': submitted && f.peso.errors}" type="text" id="peso" class="fadeIn second" name="peso" >
+                    <div *ngIf="submitted && f.peso.errors" class="invalid-feedback">
+                        <div *ngIf="f.peso.errors.required">*El peso es obligatorio</div>
+                     </div>
+                </div>
+                    <div class="col-md-4">
+                        <label class="col-md-12">Altura</label>
+                        <input formControlName="altura" [ngClass]="{ 'is-invalid': submitted && f.altura.errors}" type="text" id="altura" class="fadeIn second" name="altura">
+                        <div *ngIf="submitted && f.altura.errors" class="invalid-feedback">
+                            <div *ngIf="f.altura.errors.required">*La altura es obligatoria</div>
+                         </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="col-md-12">Tipo de sangre</label>
+                        <input type="text" id="tipoSangre" class="fadeIn second" name="tipoSangre">
+                    </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="col-md-12">Motivo de ingreso</label>
+                    <textarea formControlName="motivo" [ngClass]="{ 'is-invalid': submitted && f.motivo.errors}" type="text" id="motivo" class="fadeIn second" name="motivo" ></textarea>
+                    <div *ngIf="submitted && f.motivo.errors" class="invalid-feedback">
+                        <div *ngIf="f.motivo.errors.required">*La motivo de ingreso es obligatorio</div>
+                     </div>
+                </div>
+                <div class="col-md-4">
+                    <label class="col-md-12">Diagnóstico</label>
+                    <textarea formControlName="diagnostico" [ngClass]="{ 'is-invalid': submitted && f.diagnostico.errors}" type="text" id="diagnostico" class="fadeIn second" name="diagnostico"></textarea>
+                    <div *ngIf="submitted && f.diagnostico.errors" class="invalid-feedback">
+                        <div *ngIf="f.diagnostico.errors.required">*El diagnóticos es obligatorio</div>
+                     </div>
+                </div>
+                <div class="col-md-4">
+                    <label class="col-md-12">Observaciones</label>
+                    <textarea  type="text" id="observacion" class="fadeIn second" name="observacion"></textarea>
+                    
+                </div>
+                
+            </div>
+            <input type="submit" class="fadeIn fourth"  value="Registrar historia">
+        </form>
+    </div>
+    </div>
+
