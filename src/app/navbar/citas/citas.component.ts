@@ -75,17 +75,22 @@ especialidad:any;
   }
 
   agendar(){
-    console.log(this.loginForm.value);
     let hora_inicio: moment.Moment = moment(this.loginForm.value.fechaCita);
+    let fecha=moment(hora_inicio).format("YYYY-MM-DD");
     let hora :String=this.loginForm.value.hora;
     let horas=hora.split(':');
     hora_inicio=moment(hora_inicio).hour(parseInt(horas[0]));
     hora_inicio= moment(hora_inicio).minutes(parseInt(horas[1]));
+    let hora_inicio_string=moment(hora_inicio).format("HH:mm");
     let hora_fin: moment.Moment = moment(this.loginForm.value.fechaCita);
-    hora_fin=moment(hora_inicio).add(1, 'hours');
-    console.log(hora_inicio.format("HH:mm"));
-    console.log(hora_fin.format("HH:mm"));
-    console.log(this.id_medico)
+    let hora_fin_string=moment(hora_inicio).add(1, 'hours').format("HH:mm");
+    console.log(hora_inicio_string);
+    console.log(hora_fin_string);
+    console.log(fecha);
+    this.user_service.registro_cita_turno({hora_empieza:hora_inicio_string, hora_termina:hora_fin_string, fecha:fecha, id_medico:this.loginForm.value.medico,id_paciente:sessionStorage.getItem("id")}).subscribe(resp =>{
+      console.log(resp);
+    });
+
   }
 
   id_medico:any;

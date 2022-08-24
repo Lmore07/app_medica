@@ -27,4 +27,9 @@ export class UsuarioService {
     return this.http.post(this.Api + "/medicos/nombres/",datos);
   }
 
+  registro_cita_turno(datos:any): Observable<any> {
+    return this.http.post(this.Api + "/citas/registro/",datos);
+  }
+
+
 }

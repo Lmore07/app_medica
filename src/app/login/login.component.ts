@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
         if (resp.estado != 0) {
           sessionStorage.setItem("login", resp.estado);
           sessionStorage.setItem("ced", resp.cedula);
+          sessionStorage.setItem("id",resp.id);
           this.router.navigate(['/menu']);
         }
       });
