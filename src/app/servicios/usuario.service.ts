@@ -19,4 +19,12 @@ export class UsuarioService {
     return this.http.post(this.Api + "/iniciar_sesion",datos);
   }
 
+  obtener_datos_paciente(cedula:any): Observable<any> {
+    return this.http.get(this.Api + "/paciente/datos/"+cedula);
+  }
+
+  obtener_nombres_medicos(datos:any): Observable<any> {
+    return this.http.post(this.Api + "/medicos/nombres/",datos);
+  }
+
 }

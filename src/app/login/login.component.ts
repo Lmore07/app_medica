@@ -6,6 +6,7 @@ import {
 } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../servicios/usuario.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,11 +17,13 @@ export class LoginComponent implements OnInit {
 
   loginForm: any = FormGroup;
   submitted = false;
-  constructor(private formBuilder: FormBuilder, private user_service:UsuarioService) {}
+  constructor(private formBuilder: FormBuilder, private user_service:UsuarioService, public router:Router) {}
   //Agregar acciones del formulario del usuario
   get f() {
     return this.loginForm.controls;
   }
+
+  public static cedula:any;
 
   onSubmit() {
     this.submitted = true;
@@ -31,11 +34,11 @@ export class LoginComponent implements OnInit {
     //Campos llenos
     if (this.submitted) {
       this.user_service.login(this.loginForm.value).subscribe(resp => {
-        console.log(resp);
-        if(resp.estado){
-          alert('Login exitoso');
-        }else{
-          alert('Error al iniciar');
+        console.log(resp.estado);
+        if (resp.estado != 0) {
+          sessionStorage.setItem("login", resp.estado);
+          sessionStorage.setItem("ced", resp.cedula);
+          this.router.navigate(['/menu']);
         }
       });
     }

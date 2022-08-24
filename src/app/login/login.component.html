@@ -17,7 +17,7 @@
         <div *ngIf="submitted && f.clave.errors" class="invalid-feedback">
             <div *ngIf="f.clave.errors.required">*La contraseña es obligatoria</div>
          </div>
-        <input type="submit" class="fadeIn fourth" value="Iniciar" [routerLink]="['/navbar']">
+        <input type="submit" class="fadeIn fourth" value="Iniciar">
         <p>¿Eres nuevo en este sitio? <a [routerLink]="['/opciones']"><strong> Regístrate</strong></a></p>
       </form>
     </div>

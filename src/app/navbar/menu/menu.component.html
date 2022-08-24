@@ -1,71 +1,81 @@
 <section class="navbar custom-navbar navbar-fixed-top" role="navigation">
-    <div class="container">
-         <div class="navbar-header">
-              <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                   <span class="icon icon-bar"></span>
-                   <span class="icon icon-bar"></span>
-                   <span class="icon icon-bar"></span>
-              </button>
-              <!---logo -->
-              <a class="navbar-brand"><img src="assets/img/MediLogoVert.png" alt="Logo"></a>
-            </div>
+     <div class="container">
+          <div class="navbar-header">
+               <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+               </button>
+               <!---logo -->
+               <a class="navbar-brand"><img src="assets/img/MediLogoVert.png" alt="Logo"></a>
+          </div>
 
-         <!-- Menu Link -->
-         <div class="collapse navbar-collapse">
-              <ul class="nav navbar-nav navbar-nav-first" routerLinkActive="active">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Citas médicas
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="smoothScroll dropdown-item"></a></li>
-                    <li><a class="smoothScroll dropdown-item" [routerLink]="['/citas']"> Agendar citas médicas</a></li>
-                    <li><a class="smoothScroll dropdown-item" [routerLink]="['/vercitas']">Ver citas médicas</a></li>
-                    </div>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Historia Clínica
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="smoothScroll dropdown-item"></a></li>
-                    <li><a class="smoothScroll dropdown-item" [routerLink]="['/historias']">Crear Historia clínica</a></li>
-                    <li><a class="smoothScroll dropdown-item" [routerLink]="['/verhistorias']">Buscar Historia clínica</a></li>
-                    </div>
-                  </li>
-              </ul>
-         </div>
+          <!-- Menu Link -->
+          <div class="collapse navbar-collapse">
+               <ul class="nav navbar-nav navbar-nav-first" routerLinkActive="active">
+                    <li class="nav-item dropdown" *ngIf="(seleccionado=='PACIENTE')">
+                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Citas médicas
+                         </a>
+                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                         <li><a class="smoothScroll dropdown-item"></a></li>
+                         <li><a class="smoothScroll dropdown-item" [routerLink]="['/citas']"> Agendar citas médicas</a></li>
+                         <li><a class="smoothScroll dropdown-item" [routerLink]="['/vercitas']">Ver citas médicas</a></li>
+                         </div>
+                    </li>
+                         <li class="nav-item dropdown" *ngIf="(seleccionado=='MEDICO')">
+                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false">
+                                   Historia Clínica
+                              </a>
+                              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                         <li><a class="smoothScroll dropdown-item"></a></li>
+                         <li><a class="smoothScroll dropdown-item" [routerLink]="['/historias']">Crear Historia clínica</a></li>
+                         <li><a class="smoothScroll dropdown-item" [routerLink]="['/verhistorias']">Buscar Historia clínica</a></li>
      </div>
-  </section>
-  <section> 
-    <!-- Sobre nosotros -->
-  <section id="sobre">
-    <div class="container">
-         <div class="row">
-              <div class="col-md-6 col-sm-12">
-                   <div class="about-info">
-                        <h2>Sobre nosotros</h2>
-                        <p>En MEDI-HEALTH, nos comprometemos a brindarte la atención más excepcional en un ambiente compasivo y amigable. Con muchos años de experiencia, logramos una merecida reputación como los(as) mejores centro médico en el área y más allá.</p>
-                        <figure>
-                             <span><i class="fa fa-users"></i></span>
-                             <figcaption>
-                                  <h3>Misión</h3>
-                                  <p>Brindar servicios médicos integrales de salud de alta calidad, sustentado en nuestros valores corporativos, tecnología de punta, infraestructura hospitalaria, conocimientos, experiencia y calidez de nuestro equipo médico y administrativo que garanticen excelencia y seguridad de servicios a nuestros usuarios.</p>
-                             </figcaption>
-                        </figure>
-  
-                        <figure>
-                             <span><i class="fa fa-certificate"></i></span>
-                             <figcaption>
-                                  <h3>Visión</h3>
-                                  <p>Estar entre las tres primeras clínicas hospitales en el mercado de prestadores de servicios hospitalarios de Ecuador tanto para el sector Público como Privado, en el corto, mediano y largo plazo.</p>
-                             </figcaption>
-                        </figure>
-                   </div>
-              </div>
-              <div class="col-md-offset-1 col-md-4 col-sm-12">
-                    <a class="navbar-brand"><img src="assets/img/Medic3.png" alt="Logo"></a>
-              </div>
-         </div>
+     </li>
+     </ul>
      </div>
-  </section>
+     </div>
+</section>
+<section>
+     <!-- Sobre nosotros -->
+     <section id="sobre">
+          <div class="container">
+               <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                         <div class="about-info">
+                              <h2>Sobre nosotros</h2>
+                              <p>En MEDI-HEALTH, nos comprometemos a brindarte la atención más excepcional en un
+                                   ambiente compasivo y amigable. Con muchos años de experiencia, logramos una merecida
+                                   reputación como los(as) mejores centro médico en el área y más allá.</p>
+                              <figure>
+                                   <span><i class="fa fa-users"></i></span>
+                                   <figcaption>
+                                        <h3>Misión</h3>
+                                        <p>Brindar servicios médicos integrales de salud de alta calidad, sustentado en
+                                             nuestros valores corporativos, tecnología de punta, infraestructura
+                                             hospitalaria, conocimientos, experiencia y calidez de nuestro equipo médico
+                                             y administrativo que garanticen excelencia y seguridad de servicios a
+                                             nuestros usuarios.</p>
+                                   </figcaption>
+                              </figure>
+
+                              <figure>
+                                   <span><i class="fa fa-certificate"></i></span>
+                                   <figcaption>
+                                        <h3>Visión</h3>
+                                        <p>Estar entre las tres primeras clínicas hospitales en el mercado de
+                                             prestadores de servicios hospitalarios de Ecuador tanto para el sector
+                                             Público como Privado, en el corto, mediano y largo plazo.</p>
+                                   </figcaption>
+                              </figure>
+                         </div>
+                    </div>
+                    <div class="col-md-offset-1 col-md-4 col-sm-12">
+                         <a class="navbar-brand"><img src="assets/img/Medic3.png" alt="Logo"></a>
+                    </div>
+               </div>
+          </div>
+     </section>

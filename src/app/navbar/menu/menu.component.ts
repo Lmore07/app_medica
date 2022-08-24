@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginComponent } from 'src/app/login/login.component';
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(public router:Router) { }
+
+  seleccionado:any=sessionStorage.getItem("login");
 
   ngOnInit(): void {
+    if(sessionStorage.getItem("login") == null) {
+      this.router.navigate(['/login']);
+      
+    }
   }
 
 }

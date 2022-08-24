@@ -44,15 +44,16 @@
             <div class="row">
                 <div class="col-md-6">
                     <label class="col-md-12">Tipo de consulta</label>
-                    <select class="custom-select">
-                        <option value="" disabled selected>Selecciona un tipo de consulta</option>
-                        <option value="1">Centro Obstétrico</option>
-                        <option value="2">Pediatría</option>
-                        <option value="3">Anastesiología</option>
-                        <option value="4">Consulta Externa</option>
-                        <option value="5">Ginecología</option>
-                        <option value="6">Traumatología</option>
-                      </select>
+                    <select formControlName="especialidad_" [(ngModel)]="especialidad" (change)="seleccionar_especialidad()" class="custom-select">
+                        <option value="" disabled>Selecciona un tipo de consulta</option>
+                        <option [value]="1" selected>Centro Obstétrico</option>
+                        <option [value]="2">Pediatría</option>
+                        <option [value]="3">Anastesiología</option>
+                        <option [value]="4">Consulta Externa</option>
+                        <option [value]="5">Ginecología</option>
+                        <option [value]="6">Traumatología</option>
+                        <option [value]="7">Medicina General</option>
+                    </select>
                 </div>
                 <div class="col-md-6">
                     <label class="col-md-12">Fecha de la cita</label>
@@ -65,22 +66,20 @@
             <div class="row">
                 <div class="col-md-6">
                     <label class="col-md-12">Hora</label>
-                    <input formControlName="hora" [ngClass]="{ 'is-invalid': submitted && f.hora.errors}" type="time" id="hora" class="fadeIn second" name="hora" >
+                    <input formControlName="hora" [ngClass]="{ 'is-invalid': submitted && f.hora.errors}" type="time" id="hora" class="fadeIn second" name="hora" min="07:00" max="22:00" step="3600">
                     <div *ngIf="submitted && f.hora.errors" class="invalid-feedback">
                         <div *ngIf="f.hora.errors.required">*La hora es obligatoria</div>
                      </div>
                 </div>
                 <div class="col-md-6">
                     <label class="col-md-12">Médico</label>
-                    <select class="custom-select">
+                    <select formControlName="medico" [(ngModel)]="id_medico" class="custom-select">
                         <option value="" disabled selected>Selecciona un médico</option>
-                        <option value="">Giovanni Alejandro Escorza Velez</option>
-                        <option value="">Patricia Alexandra Andrade Carrera</option>
-                        <option value="">Fabian Edgar Vasconez Muñoz</option>
+                        <option *ngFor="let medico of medicos" [value]="medico.id_medico">{{ medico.nombres }}</option>
                       </select>
                 </div>
             </div>
-            <input type="submit" class="fadeIn fourth" value="Agendar cita">
+            <input type="submit" class="fadeIn fourth" (click)="agendar()" value="Agendar cita">
         </form>
     </div>
     </div>
