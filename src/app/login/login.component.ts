@@ -7,6 +7,8 @@ import {
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../servicios/usuario.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2'
+
 
 @Component({
   selector: 'app-login',
@@ -39,7 +41,10 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem("login", resp.estado);
           sessionStorage.setItem("ced", resp.cedula);
           sessionStorage.setItem("id",resp.id);
+          this.alertas("success", resp.mensaje,"");
           this.router.navigate(['/menu']);
+        }else{
+          this.alertas("error", resp.mensaje,"");
         }
       });
     }
@@ -49,5 +54,13 @@ export class LoginComponent implements OnInit {
       usuario: ['', [Validators.required, Validators.email]],
       clave: ['', [Validators.required]],
     });
+  }
+
+  alertas(icono:any,texto:any, titulo:any){
+    Swal.fire({
+      icon: icono,
+      title: titulo,
+      text: texto
+    })
   }
 }

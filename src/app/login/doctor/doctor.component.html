@@ -62,11 +62,17 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <label>Especialidad</label>
-                    <input  formControlName="especialidad" [ngClass]="{ 'is-invalid': submitted && f.especialidad.errors}" type="text" id="especialidad" class="fadeIn second" name="especialidad">
-                    <div *ngIf="submitted && f.especialidad.errors" class="invalid-feedback">
-                        <div *ngIf="f.especialidad.errors.required">*La cédula de identidad es obligatoria</div>
-                     </div>
+                    <label class="col-md-12">Especialidad</label>
+                    <select formControlName="especialidad" class="custom-select">
+                        <option value="0" selected disabled>Selecciona un tipo de consulta</option>
+                        <option value="Centro Obstétrico" >Centro Obstétrico</option>
+                        <option value="Pediatría">Pediatría</option>
+                        <option value="Anastesiología">Anastesiología</option>
+                        <option value="Consulta Externa">Consulta Externa</option>
+                        <option value="Ginecología">Ginecología</option>
+                        <option value="Traumatología">Traumatología</option>
+                        <option value="Medicina General">Medicina General</option>
+                    </select>
                 </div>
                 <div class="col-md-6">
                     <label>Fecha de ingreso</label>

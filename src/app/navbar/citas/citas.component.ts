@@ -83,7 +83,6 @@ especialidad:any;
     hora_inicio=moment(hora_inicio).hour(parseInt(horas[0]));
     hora_inicio= moment(hora_inicio).minutes(parseInt(horas[1]));
     let hora_inicio_string=moment(hora_inicio).format("HH:mm");
-    let hora_fin: moment.Moment = moment(this.loginForm.value.fechaCita);
     let hora_fin_string=moment(hora_inicio).add(1, 'hours').format("HH:mm");
     this.user_service.registro_cita_turno({hora_empieza:hora_inicio_string, hora_termina:hora_fin_string, fecha:fecha, id_medico:this.loginForm.value.medico,id_paciente:sessionStorage.getItem("id")}).subscribe(resp =>{
       if(resp.estado==1){
