@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
     //Campos llenos
     if (this.submitted) {
       this.user_service.login(this.loginForm.value).subscribe(resp => {
-        console.log(resp.estado);
+        console.log(resp);
         if (resp.estado != 0) {
           sessionStorage.setItem("login", resp.estado);
           sessionStorage.setItem("ced", resp.cedula);
