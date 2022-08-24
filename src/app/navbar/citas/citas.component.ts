@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl,FormGroup,Validators,FormBuilder } from '@angular/forms';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
 import * as moment from 'moment';
+import Swal from 'sweetalert2'
 
 
 @Component({
@@ -84,13 +85,21 @@ especialidad:any;
     let hora_inicio_string=moment(hora_inicio).format("HH:mm");
     let hora_fin: moment.Moment = moment(this.loginForm.value.fechaCita);
     let hora_fin_string=moment(hora_inicio).add(1, 'hours').format("HH:mm");
-    console.log(hora_inicio_string);
-    console.log(hora_fin_string);
-    console.log(fecha);
     this.user_service.registro_cita_turno({hora_empieza:hora_inicio_string, hora_termina:hora_fin_string, fecha:fecha, id_medico:this.loginForm.value.medico,id_paciente:sessionStorage.getItem("id")}).subscribe(resp =>{
-      console.log(resp);
+      if(resp.estado==1){
+        this.alertas("success",resp.mensaje,"");
+      }else{
+        this.alertas("error", resp.mensaje,"");
+      }
     });
+  }
 
+  alertas(icono:any,texto:any, titulo:any){
+    Swal.fire({
+      icon: icono,
+      title: titulo,
+      text: texto
+    })
   }
 
   id_medico:any;
