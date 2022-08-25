@@ -16,6 +16,7 @@ import { MenuComponent } from './navbar/menu/menu.component';
 import { VercitasComponent } from './navbar/vercitas/vercitas.component';
 import { HistoriaComponent } from './navbar/citas/historia/historia.component';
 import { VerhistoriasComponent } from './navbar/vercitas/verhistorias/verhistorias.component';
+import { MatSliderModule } from '@angular/material/slider';
 
 const routes: Routes = [
   { path: 'opciones', component: OpcionComponent },
@@ -39,6 +40,7 @@ const routes: Routes = [
   imports: [
     HttpClientModule, 
     BrowserModule,
+    MatSliderModule,
     AppRoutingModule,
     ReactiveFormsModule
   ],
