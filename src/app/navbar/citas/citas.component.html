@@ -45,8 +45,8 @@
                 <div class="col-md-6">
                     <label class="col-md-12">Tipo de consulta</label>
                     <select formControlName="especialidad_" [(ngModel)]="especialidad" (change)="seleccionar_especialidad()" class="custom-select">
-                        <option value="" disabled>Selecciona un tipo de consulta</option>
-                        <option [value]="1" selected>Centro Obstétrico</option>
+                        <option value="" disabled selected>Selecciona un tipo de consulta</option>
+                        <option [value]='1' >Centro Obstétrico</option>
                         <option [value]="2">Pediatría</option>
                         <option [value]="3">Anastesiología</option>
                         <option [value]="4">Consulta Externa</option>

@@ -36,8 +36,9 @@ export class DoctorComponent implements OnInit {
         this.router.navigateByUrl("/login");
       });
     }
-   
   }
+
+  
 
   alertas(icono:any,texto:any, titulo:any){
     Swal.fire({

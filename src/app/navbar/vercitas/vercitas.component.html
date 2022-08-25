@@ -7,53 +7,27 @@
 	<table class="text-center" >
 		<thead>
 			<tr >
-                <th>Cédula de identidad</th>
-                <th>Nombres</th>
-                <th>Fecha</th>
-                <th>Hora</th>
-                <th>Tipo consulta</th>
+                <th>Empieza Cita</th>
+                <th>Termina Cita</th>
+                <th>Especialidad</th>
+                <th>Médico</th>
+                <th>Fecha Consulta</th>
+                <th>Estado Consulta</th>
                 <th>Acciones</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td>Cell 1</td>
-				<td>Cell 2</td>
-				<td>Cell 3</td>
-				<td>Cell 4</td>
-				<td>Cell 5</td>
+			<tr *ngFor="let cita of citas;let control=index">
+				<td> {{cita.hora_empieza}} </td>
+				<td>{{cita.hora_termina}}</td>
+				<td>{{cita.especialidad}}</td>
+				<td>{{cita.medico}}</td>
+				<td>{{cita.fecha}}</td>
+				<td>{{cita.estado}}</td>
                 <td>
-                    <a class="btn btn-info"><i class='bx bxs-edit'></i></a>
-                    <a class="btn btn-danger"><i class='bx bx-x-circle'></i></a>
-                    </td>
-			</tr>
-			<tr>
-				<td>Cell 1</td>
-				<td>Cell 2</td>
-				<td>Cell 3</td>
-				<td>Cell 4</td>
-				<td>Cell 5</td>
-			</tr>
-			<tr>
-				<td>Cell 1</td>
-				<td>Cell 2</td>
-				<td>Cell 3</td>
-				<td>Cell 4</td>
-				<td>Cell 5</td>
-			</tr>
-			<tr>
-				<td>Cell 1</td>
-				<td>Cell 2</td>
-				<td>Cell 3</td>
-				<td>Cell 4</td>
-				<td>Cell 5</td>
-			</tr>
-			<tr>
-				<td>Cell 1</td>
-				<td>Cell 2</td>
-				<td>Cell 3</td>
-				<td>Cell 4</td>
-				<td>Cell 5</td>
+                    <a class="btn btn-info" (click)="agendar(cita.id_cita, cita.id_turno,cita.id_medico,cita.especialidad,cita.fecha,cita.hora_empieza)"><i class='bx bxs-edit'></i></a>
+                    <a class="btn btn-danger" (click)="borrar(cita.id_turno,control)"><i class='bx bx-x-circle'></i></a>
+                </td>
 			</tr>
 		</tbody>
 	</table>

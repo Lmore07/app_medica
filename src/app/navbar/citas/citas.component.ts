@@ -75,6 +75,24 @@ especialidad:any;
     }
   }
 
+  seleccionar_id_especialidad(especialidad: string):any {
+    if(especialidad=="Centro Obstétrico"){
+      return 1;
+    }else if(especialidad=="Pediatría"){
+      return 2;
+    }else if(especialidad=="Anastesiología"){
+      return 3;
+    }else if(especialidad=="Consulta Externa"){
+      return 4;
+    }else if(especialidad=="Ginecología") {
+      return 5;
+    }else if(especialidad=="Traumatología"){
+      return 6;
+    }else if(especialidad=="Medicina General"){
+      return 7;
+    }
+  }
+
   agendar(){
     let hora_inicio: moment.Moment = moment(this.loginForm.value.fechaCita);
     let fecha=moment(hora_inicio).format("YYYY-MM-DD");
@@ -90,6 +108,7 @@ especialidad:any;
       }else{
         this.alertas("error", resp.mensaje,"");
       }
+      CitasComponent.reagendar=false;
     });
   }
 
@@ -118,6 +137,21 @@ especialidad:any;
             medico: ['', [Validators.required]]
             });
         }
+        if(CitasComponent.reagendar){
+          console.log(CitasComponent.hora);
+          this.especialidad=this.seleccionar_id_especialidad(CitasComponent.especialidad);
+          this.id_medico=CitasComponent.id_medico;
+          this.loginForm= this.formBuilder.group({
+            cedula: [resp.cedula, [Validators.required]],
+            nombres: [resp.nombres, [Validators.required]],
+            apellidos: [resp.apellidos, [Validators.required]],
+            edad: [resp.edad, [Validators.required]],
+            fechaCita: [CitasComponent.fecha, [Validators.required]],
+            hora: [CitasComponent.hora, [Validators.required]],
+            especialidad_: [CitasComponent.especialidad, [Validators.required]],
+            medico: [CitasComponent.id_medico, [Validators.required]]
+            });
+        }
       });
       this.loginForm= this.formBuilder.group({
         cedula: ['', [Validators.required]],
@@ -130,4 +164,12 @@ especialidad:any;
         medico: ['', [Validators.required]]
         });
     }
+
+    static id_cita:any;
+    static id_turno:any;
+    static fecha:any;
+    static especialidad:any;
+    static id_medico:any;
+    static hora:any;
+    static reagendar=false;
   }

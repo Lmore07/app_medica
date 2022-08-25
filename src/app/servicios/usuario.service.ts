@@ -31,6 +31,11 @@ export class UsuarioService {
     return this.http.post(this.Api + "/citas/registro/",datos);
   }
 
-  
+  ver_citas_turnos(datos:any): Observable<any> {
+    return this.http.get(this.Api + "/paciente/citas/"+datos);
+  }
 
+  eliminar_citas(datos:any): Observable<any> {
+    return this.http.delete(this.Api + "/citas/eliminar/"+datos);
+  }
 }
