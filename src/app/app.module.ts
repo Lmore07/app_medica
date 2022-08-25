@@ -17,6 +17,8 @@ import { VercitasComponent } from './navbar/vercitas/vercitas.component';
 import { HistoriaComponent } from './navbar/citas/historia/historia.component';
 import { VerhistoriasComponent } from './navbar/vercitas/verhistorias/verhistorias.component';
 import { MatSliderModule } from '@angular/material/slider';
+import { AdministradorComponent } from './navbar/vercitas/administrador/administrador.component';
+import { PerfilComponent } from './navbar/citas/perfil/perfil.component';
 
 const routes: Routes = [
   { path: 'opciones', component: OpcionComponent },
@@ -35,7 +37,7 @@ const routes: Routes = [
     LoginComponent,
     DoctorComponent,
     PacienteComponent, 
-    OpcionComponent, NavbarComponent, CitasComponent, MenuComponent, VercitasComponent, HistoriaComponent, VerhistoriasComponent
+    OpcionComponent, NavbarComponent, CitasComponent, MenuComponent, VercitasComponent, HistoriaComponent, VerhistoriasComponent, AdministradorComponent, PerfilComponent
   ],
   imports: [
     HttpClientModule, 

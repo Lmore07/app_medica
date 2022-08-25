@@ -1,0 +1,82 @@
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <h2 class="active"> Registro de Doctor </h2>
+
+        <!-- Icon -->
+        <div class="fadeIn first">
+            <img src="assets/img/MediLogo2.png" id="icon" alt="Icon" />
+
+        </div>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="col-md-12">Nombres</label>
+                    <input formControlName="nombres" [ngClass]="{ 'is-invalid': submitted && f.nombres.errors}" type="text" id="nombres" class="fadeIn second" name="nombres">
+                    <div *ngIf="submitted && f.nombres.errors" class="invalid-feedback">
+                        <div *ngIf="f.nombres.errors.required">*El nombre es obligatorio</div>
+                     </div>
+                </div>
+                <div class="col-md-6">
+                    <label class="col-md-12">Apellidos</label>
+                    <input formControlName="apellidos" [ngClass]="{ 'is-invalid': submitted && f.apellidos.errors}" type="text" id="apellidos" class="fadeIn second" name="apellidos">
+                    <div *ngIf="submitted && f.apellidos.errors" class="invalid-feedback">
+                        <div *ngIf="f.apellidos.errors.required">*El apellido es obligatorio</div>
+                     </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="col-md-12">Dirección</label>
+                    <input formControlName="direccion" [ngClass]="{ 'is-invalid': submitted && f.direccion.errors}" type="text" id="direccion" class="fadeIn second" name="direccion">
+                    <div *ngIf="submitted && f.direccion.errors" class="invalid-feedback">
+                        <div *ngIf="f.direccion.errors.required">*La dirección es obligatoria</div>
+                     </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="col-md-12">Fecha Nacimiento</label>
+                    <input formControlName="fecha_naci" [ngClass]="{ 'is-invalid': submitted && f.fecha_naci.errors}" type="date" id="fecha_naci" class="fadeIn second" name="fecha_naci">
+                    <div *ngIf="submitted && f.fecha_naci.errors" class="invalid-feedback">
+                        <div *ngIf="f.fecha_naci.errors.required">*La fecha de nacimiento es obligatoria</div>
+                     </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="col-md-12">Cédula de identidad</label>
+                    <input formControlName="cedula" [ngClass]="{ 'is-invalid': submitted && f.cedula.errors}" type="text" id="cedula" class="fadeIn second" name="cedula" maxlength="10">
+                    <div *ngIf="submitted && f.cedula.errors" class="invalid-feedback">
+                        <div *ngIf="f.cedula.errors.required">*La cédula de identidad es obligatoria</div>
+                     </div>
+                </div>
+                <div class="col-md-6">
+                    <label class="col-md-12">Teléfono</label>
+                    <input formControlName="celular" [ngClass]="{ 'is-invalid': submitted && f.celular.errors}" type="text" id="celular" class="fadeIn second" name="celular" maxlength="10">
+                    <div *ngIf="submitted && f.celular.errors" class="invalid-feedback">
+                        <div *ngIf="f.celular.errors.required">*El número de teléfono es obligatorio</div>
+                     </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="col-md-12">Especialidad</label>
+                    <input  formControlName="especialidad" [ngClass]="{ 'is-invalid': submitted && f.especialidad.errors}" type="text" id="especialidad" class="fadeIn second" name="especialidad">
+                    <div *ngIf="submitted && f.especialidad.errors" class="invalid-feedback">
+                        <div *ngIf="f.especialidad.errors.required">*La cédula de identidad es obligatoria</div>
+                     </div>
+                </div>
+                <div class="col-md-6">
+                    <label class="col-md-12">Fecha de ingreso</label>
+                    <input formControlName="fecha_registro" [ngClass]="{ 'is-invalid': submitted && f.fecha_registro.errors}" type="date" id="fecha_registro" class="fadeIn second" name="fecha_registro">
+                    <div *ngIf="submitted && f.fecha_registro.errors" class="invalid-feedback">
+                        <div *ngIf="f.fecha_registro.errors.required">*La fecha de nacimiento es obligatoria</div>
+                     </div>
+                </div>
+            </div>
+            <input type="button" class="fadeIn fourth" value="Editar perfil">
+            <input type="submit" class="fadeIn fourth" value="Guardar cambios">
+            <p>¿Te equivocaste de registro? <a [routerLink]="['/menu']"><strong> Regresar</strong></a></p>
+           </form>
+    </div>
+    </div>
+
