@@ -13,10 +13,12 @@ import { HistoriaComponent } from './navbar/citas/historia/historia.component';
 import { VerhistoriasComponent } from './navbar/vercitas/verhistorias/verhistorias.component';
 import { AdministradorComponent } from './navbar/vercitas/administrador/administrador.component';
 import { PerfilComponent } from './navbar/citas/perfil/perfil.component';
+import { Administrador2Component } from './navbar/vercitas/administrador2/administrador2.component';
 
 const routes: Routes = [
   { path: 'verperfil', component: PerfilComponent },
   { path: 'administrador', component: AdministradorComponent },
+  { path: 'administrador2', component: Administrador2Component },
   { path: 'verhistorias', component: VerhistoriasComponent },
   { path: 'historias', component: HistoriaComponent },
   { path: 'vercitas', component: VercitasComponent },

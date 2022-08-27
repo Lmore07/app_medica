@@ -16,8 +16,12 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
     if(sessionStorage.getItem("login") == null) {
       this.router.navigate(['/login']);
-      
     }
+  }
+
+  salir(){
+    sessionStorage.clear();
+    this.router.navigate(['/']);
   }
 
 }

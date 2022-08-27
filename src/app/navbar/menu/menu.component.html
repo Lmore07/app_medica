@@ -13,8 +13,16 @@
           <!-- Menu Link -->
           <div class="collapse navbar-collapse">
                <ul class="nav navbar-nav navbar-nav-first" routerLinkActive="active">
-                <li><a [routerLink]="['/administrador']" class="smoothScroll">Administrar perfiles</a></li>
-                 <li class="nav-item dropdown">
+                    <li *ngIf="seleccionado=='ADMINISTRADOR'" class="nav-item dropdown">
+                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                             ADMINISTRADOR
+                         </a>
+                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                         <li><a class="smoothScroll dropdown-item"></a></li>
+                         <li><a class="smoothScroll dropdown-item" [routerLink]="['/administrador']"> Ver listado de Medicos</a></li>
+                         <li><a class="smoothScroll dropdown-item" [routerLink]="['/administrador2']">Ver lista de Usuarios</a></li>
+                         </div>
+                       </li>                 <li *ngIf="seleccionado=='PACIENTE'" class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                          Citas médicas
                      </a>
@@ -24,7 +32,7 @@
                      <li><a class="smoothScroll dropdown-item" [routerLink]="['/vercitas']">Ver citas médicas</a></li>
                      </div>
                    </li>
-                   <li class="nav-item dropdown">
+                   <li *ngIf="seleccionado=='MEDICO'" class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                          Historia Clínica
                      </a>
@@ -42,7 +50,7 @@
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                        <li><a class="smoothScroll dropdown-item"></a></li>
                        <li><a class="smoothScroll dropdown-item" [routerLink]="['/verperfil']">Ver perfil</a></li>
-                       <li><a class="smoothScroll dropdown-item">Salir <i class='bx bx-log-in-circle'></i></a></li>
+                       <li (click)="salir()"><a class="smoothScroll dropdown-item">Salir <i class='bx bx-log-in-circle'></i></a></li>
                   </div>
              </li>
         </ul>

@@ -1,5 +1,5 @@
 <div class="container">
-    <h2 class="active"> Listado de perfiles</h2>
+    <h2 class="active"> Listado de Médicos</h2>
     <div class="fadeIn first">
         <img src="assets/img/MediLogo2.png" id="icon" alt="Icon" />
     </div>
@@ -10,50 +10,26 @@
 				<th>N° de Cédula</th>
                 <th>Nombres</th>
                 <th>Apellidos</th>
-                <th>Especialidad</th>
+				<th>Especialidad</th>
+				<th>Direccion</th>
+				<th>Celular</th>
                 <th>Correo Eléctronico</th>
                 <th>Acciones</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td>Cell 1</td>
-				<td>Cell 2</td>
-				<td>Cell 3</td>
-				<td>Cell 4</td>
-				<td>Cell 5</td>
+			<tr *ngFor="let medico of medicos;let control=index">
+				<td> {{medico.cedula}} </td>
+				<td> {{medico.nombres}}</td>
+				<td> {{medico.apellidos}}</td>
+				<td> {{medico.especialidad}}</td>
+				<td> {{medico.direccion}}</td>
+				<td> {{medico.celular}}</td>
+				<td> {{medico.correo}}</td>
                 <td>
-                    <a class="btn btn-info"><i class='bx bx-check'></i></a>
-                    <a class="btn btn-danger"><i class='bx bx-x'></i></a>
-                    </td>
-			</tr>
-			<tr>
-				<td>Cell 1</td>
-				<td>Cell 2</td>
-				<td>Cell 3</td>
-				<td>Cell 4</td>
-				<td>Cell 5</td>
-			</tr>
-			<tr>
-				<td>Cell 1</td>
-				<td>Cell 2</td>
-				<td>Cell 3</td>
-				<td>Cell 4</td>
-				<td>Cell 5</td>
-			</tr>
-			<tr>
-				<td>Cell 1</td>
-				<td>Cell 2</td>
-				<td>Cell 3</td>
-				<td>Cell 4</td>
-				<td>Cell 5</td>
-			</tr>
-			<tr>
-				<td>Cell 1</td>
-				<td>Cell 2</td>
-				<td>Cell 3</td>
-				<td>Cell 4</td>
-				<td>Cell 5</td>
+					<a (click)="aprobar_medico(medico.id)" *ngIf="medico.estado=='PENDIENTE'" class="btn btn-info"><i class='bx bx-check'></i></a>
+                    <a (click)="borrar(medico.id,control)" class="btn btn-danger"><i class='bx bx-x'></i></a>
+				</td>
 			</tr>
 		</tbody>
 	</table>

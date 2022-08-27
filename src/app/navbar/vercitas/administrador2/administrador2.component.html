@@ -1,0 +1,33 @@
+<div class="container">
+    <h2 class="active"> Listado de Usuarios</h2>
+    <div class="fadeIn first">
+        <img src="assets/img/MediLogo2.png" id="icon" alt="Icon" />
+    </div>
+    <strong><a [routerLink]="['/menu']"> <i class='bx bxs-left-arrow'></i> Volver al menú</a></strong>
+	<table class="text-center" >
+		<thead>
+			<tr >
+				<th>N° de Cédula</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+				<th>Direccion</th>
+				<th>Celular</th>
+                <th>Correo Eléctronico</th>
+                <th>Acciones</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let paciente of pacientes;let control=index">
+				<td> {{paciente.cedula}} </td>
+				<td> {{paciente.nombres}}</td>
+				<td> {{paciente.apellidos}}</td>
+				<td> {{paciente.direccion}}</td>
+				<td> {{paciente.celular}}</td>
+				<td> {{paciente.correo}}</td>
+                <td>
+                    <a (click)="borrar(paciente.id,control)" class="btn btn-danger"><i class='bx bx-x'></i></a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
