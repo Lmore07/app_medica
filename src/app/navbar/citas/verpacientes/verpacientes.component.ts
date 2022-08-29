@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
 import Swal from 'sweetalert2';
+import { HistoriaComponent } from '../historia/historia.component';
 
 @Component({
   selector: 'app-verpacientes',
@@ -10,7 +12,7 @@ import Swal from 'sweetalert2';
 export class VerpacientesComponent implements OnInit {
 
   pacientes:any;
-  constructor(public userService:UsuarioService) { }
+  constructor(public userService:UsuarioService, public router:Router) { }
 
   ngOnInit(): void {
     this.userService.obtener_citas_medico(sessionStorage.getItem('id')).subscribe(response => {
@@ -25,6 +27,13 @@ export class VerpacientesComponent implements OnInit {
 
   borrar(id:any,index:any){
     
+  }
+
+  atender(id:any,id_pac:any,id_cita:any){
+    sessionStorage.setItem('atencion',id);
+    sessionStorage.setItem('paciente',id_pac);
+    sessionStorage.setItem('cita',id_cita);
+    this.router.navigateByUrl("/historias");
   }
 
   alertas(icono:any,texto:any, titulo:any){

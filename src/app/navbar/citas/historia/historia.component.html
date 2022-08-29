@@ -12,14 +12,14 @@
             <div class="row">
                     <div class="col-md-4">
                         <label>Cédula de identidad</label>
-                        <input formControlName="cedula" [ngClass]="{ 'is-invalid': submitted && f.cedula.errors}" type="text" id="cedula" class="fadeIn second" name="cedula" maxlength="10">
+                        <input readonly formControlName="cedula" [ngClass]="{ 'is-invalid': submitted && f.cedula.errors}" type="text" id="cedula" class="fadeIn second" name="cedula" maxlength="10">
                         <div *ngIf="submitted && f.cedula.errors" class="invalid-feedback">
                             <div *ngIf="f.cedula.errors.required">*La cédula de identidad es obligatoria</div>
                          </div>
                     </div>
                 <div class="col-md-4">
                     <label class="col-md-12">Nombres</label>
-                    <input formControlName="nombres" [ngClass]="{ 'is-invalid': submitted && f.nombres.errors}" type="text" id="nombres" class="fadeIn second" name="nombres">
+                    <input readonly formControlName="nombres" [ngClass]="{ 'is-invalid': submitted && f.nombres.errors}" type="text" id="nombres" class="fadeIn second" name="nombres">
                     <div *ngIf="submitted && f.nombres.errors" class="invalid-feedback">
                         <div *ngIf="f.nombres.errors.required">*El nombre es obligatorio</div>
                      </div>
@@ -28,7 +28,7 @@
                     <label class="col-md-12">Motivo de ingreso</label>
                     <textarea formControlName="motivo" [ngClass]="{ 'is-invalid': submitted && f.motivo.errors}" type="text" id="motivo" class="fadeIn second" name="motivo" ></textarea>
                     <div *ngIf="submitted && f.motivo.errors" class="invalid-feedback">
-                        <div *ngIf="f.motivo.errors.required">*La motivo de ingreso es obligatorio</div>
+                        <div *ngIf="f.motivo.errors.required">*El motivo de ingreso es obligatorio</div>
                      </div>
                 </div>
             </div>
@@ -38,16 +38,19 @@
                     <label class="col-md-12">Diagnóstico</label>
                     <textarea formControlName="diagnostico" [ngClass]="{ 'is-invalid': submitted && f.diagnostico.errors}" type="text" id="diagnostico" class="fadeIn second" name="diagnostico"></textarea>
                     <div *ngIf="submitted && f.diagnostico.errors" class="invalid-feedback">
-                        <div *ngIf="f.diagnostico.errors.required">*El diagnótico es obligatorio</div>
+                        <div *ngIf="f.diagnostico.errors.required">*El diagnóstico es obligatorio</div>
                      </div>
                 </div>
                 <div class="col-md-4">
                     <label class="col-md-12">Observaciones</label>
-                    <textarea  type="text" id="observacion" class="fadeIn second" name="observacion"></textarea>
+                    <textarea formControlName="observaciones" [ngClass]="{ 'is-invalid': submitted && f.observaciones.errors}" type="text" id="observaciones" class="fadeIn second" name="observaciones"></textarea>
+                    <div *ngIf="submitted && f.observaciones.errors" class="invalid-feedback">
+                        <div *ngIf="f.observaciones.errors.required">*Las observaciones son obligatorias</div>
+                     </div>
                 </div>
                 <div class="col-md-4">
                     <label class="col-md-12">Medicación</label>
-                    <input type="button" class="fadeIn fourth"  value="Recetar Medicamentos">
+                    <input type="button" (click)="recetar()" class="fadeIn fourth"  value="Recetar Medicamentos">
                 </div>
                 
             </div>

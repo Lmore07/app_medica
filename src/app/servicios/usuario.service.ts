@@ -75,4 +75,8 @@ export class UsuarioService {
     return this.http.get(this.Api + "/medico/"+datos);
   }
 
+  insertar_diagnosticos(datos:any): Observable<any>{
+    return this.http.post(this.Api + "/diagnostico/registro",datos);
+  }
+
 }
