@@ -1,0 +1,32 @@
+<div class="container">
+    <h2 class="active"> Listado de Usuarios</h2>
+    <div class="fadeIn first">
+        <img src="assets/img/MediLogo2.png" id="icon" alt="Icon" />
+    </div>
+    <strong><a [routerLink]="['/menu']"> <i class='bx bxs-left-arrow'></i> Volver al menú</a></strong>
+	<table class="text-center" >
+		<thead>
+			<tr >
+				<th>N° de Cédula</th>
+                <th>Nombres</th>
+				<th>Fecha</th>
+                <th>Hora de Cita</th>
+                <th>Finaliza Cita</th>
+                <th>Atender</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let paciente of pacientes;let control=index">
+				<td> {{paciente.cedula}} </td>
+				<td> {{paciente.nombres}}</td>
+				<td> {{paciente.fecha}}</td>
+				<td> {{paciente.hora_empieza}}</td>
+				<td> {{paciente.hora_termina}}</td>
+                <td>
+					<a *ngIf="paciente.estado=='ATENDIDO'" (click)="borrar(paciente.id,control)" class="btn btn-success"><i class='bx bx-check-circle bx-lg bx-border-circle'></i></a>
+                    <a *ngIf="paciente.estado=='PENDIENTE'" (click)="borrar(paciente.id,control)" class="btn btn-danger"><i class='bx bx-check-circle bx-lg bx-border-circle'></i></a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

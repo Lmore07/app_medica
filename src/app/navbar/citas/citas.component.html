@@ -12,13 +12,13 @@
             <div class="row">
                     <div class="col-md-6">
                         <label>Cédula de identidad</label>
-                        <input formControlName="cedula" [ngClass]="{ 'is-invalid': submitted && f.cedula.errors}" type="text" id="cedula" class="fadeIn second" name="cedula" maxlength="10">
+                        <input readonly formControlName="cedula" [ngClass]="{ 'is-invalid': submitted && f.cedula.errors}" type="text" id="cedula" class="fadeIn second" name="cedula" maxlength="10">
                         <div *ngIf="submitted && f.cedula.errors" class="invalid-feedback">
                             <div *ngIf="f.cedula.errors.required">*La cédula de identidad es obligatoria</div>
                          </div>
                     </div>
                 <div class="col-md-6">
-                    <label class="col-md-12">Nombres</label>
+                    <label readonly class="col-md-12">Nombres</label>
                     <input formControlName="nombres" [ngClass]="{ 'is-invalid': submitted && f.nombres.errors}" type="text" id="nombres" class="fadeIn second" name="nombres">
                     <div *ngIf="submitted && f.nombres.errors" class="invalid-feedback">
                         <div *ngIf="f.nombres.errors.required">*El nombre es obligatorio</div>
@@ -28,14 +28,14 @@
             <div class="row">
                 <div class="col-md-6">
                 <label class="col-md-12">Apellidos</label>
-                <input formControlName="apellidos" [ngClass]="{ 'is-invalid': submitted && f.apellidos.errors}" type="text" id="apellidos" class="fadeIn second" name="apellidos">
+                <input readonly formControlName="apellidos" [ngClass]="{ 'is-invalid': submitted && f.apellidos.errors}" type="text" id="apellidos" class="fadeIn second" name="apellidos">
                 <div *ngIf="submitted && f.apellidos.errors" class="invalid-feedback">
                     <div *ngIf="f.apellidos.errors.required">*El apellido es obligatorio</div>
                  </div>
             </div>
                 <div class="col-md-6">
                     <label class="col-md-12">Edad</label>
-                    <input formControlName="edad" [ngClass]="{ 'is-invalid': submitted && f.edad.errors}" type="text" id="edad" class="fadeIn second" name="edad" maxlength="2">
+                    <input readonly formControlName="edad" [ngClass]="{ 'is-invalid': submitted && f.edad.errors}" type="text" id="edad" class="fadeIn second" name="edad" maxlength="2">
                     <div *ngIf="submitted && f.edad.errors" class="invalid-feedback">
                         <div *ngIf="f.edad.errors.required">*La Edad es obligatoria</div>
                      </div>

@@ -38,7 +38,7 @@
                     <label class="col-md-12">Diagnóstico</label>
                     <textarea formControlName="diagnostico" [ngClass]="{ 'is-invalid': submitted && f.diagnostico.errors}" type="text" id="diagnostico" class="fadeIn second" name="diagnostico"></textarea>
                     <div *ngIf="submitted && f.diagnostico.errors" class="invalid-feedback">
-                        <div *ngIf="f.diagnostico.errors.required">*El diagnóticos es obligatorio</div>
+                        <div *ngIf="f.diagnostico.errors.required">*El diagnótico es obligatorio</div>
                      </div>
                 </div>
                 <div class="col-md-4">

@@ -14,6 +14,7 @@ import { VerhistoriasComponent } from './navbar/vercitas/verhistorias/verhistori
 import { AdministradorComponent } from './navbar/vercitas/administrador/administrador.component';
 import { PerfilComponent } from './navbar/citas/perfil/perfil.component';
 import { Administrador2Component } from './navbar/vercitas/administrador2/administrador2.component';
+import { VerpacientesComponent } from './navbar/citas/verpacientes/verpacientes.component';
 
 const routes: Routes = [
   { path: 'verperfil', component: PerfilComponent },
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'doctor', component: DoctorComponent },
   { path: 'paciente', component: PacienteComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'atencion', component: VerpacientesComponent },
   { path: '', component: InicioComponent, pathMatch: 'full' },
   { path: '**', redirectTo: '/inicio', pathMatch: 'full' },  
 ];

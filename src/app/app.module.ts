@@ -20,6 +20,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { AdministradorComponent } from './navbar/vercitas/administrador/administrador.component';
 import { PerfilComponent } from './navbar/citas/perfil/perfil.component';
 import { Administrador2Component } from './navbar/vercitas/administrador2/administrador2.component';
+import { VerpacientesComponent } from './navbar/citas/verpacientes/verpacientes.component';
 
 const routes: Routes = [
   { path: 'opciones', component: OpcionComponent },
@@ -38,7 +39,7 @@ const routes: Routes = [
     LoginComponent,
     DoctorComponent,
     PacienteComponent, 
-    OpcionComponent, NavbarComponent, CitasComponent, MenuComponent, VercitasComponent, HistoriaComponent, VerhistoriasComponent, AdministradorComponent, PerfilComponent, Administrador2Component
+    OpcionComponent, NavbarComponent, CitasComponent, MenuComponent, VercitasComponent, HistoriaComponent, VerhistoriasComponent, AdministradorComponent, PerfilComponent, Administrador2Component, VerpacientesComponent
   ],
   imports: [
     HttpClientModule, 

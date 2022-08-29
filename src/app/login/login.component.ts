@@ -39,10 +39,20 @@ export class LoginComponent implements OnInit {
         console.log(resp);
         if (resp.estado != 0) {
           sessionStorage.setItem("login", resp.estado);
-          sessionStorage.setItem("ced", resp.cedula);
-          sessionStorage.setItem("id",resp.id);
-          this.alertas("success", resp.mensaje,"");
-          this.router.navigate(['/menu']);
+          if(resp.estado == 'MEDICO') {
+            this.user_service.obtiene_id_medico(resp.id).subscribe(response => {
+              sessionStorage.setItem("id", response.id_medico);
+              sessionStorage.setItem("ced", resp.cedula);
+              this.alertas("success", resp.mensaje,"");
+              this.router.navigate(['/menu']);
+            });
+          }else{
+            sessionStorage.setItem("ced", resp.cedula);
+            sessionStorage.setItem("id",resp.id);
+            this.alertas("success", resp.mensaje,"");
+            this.router.navigate(['/menu']);
+          }
+          
         }else{
           this.alertas("error", resp.mensaje,"");
         }

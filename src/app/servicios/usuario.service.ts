@@ -67,4 +67,12 @@ export class UsuarioService {
     return this.http.post(this.Api + "/admin/aprobar",datos);
   }
 
+  obtener_citas_medico(datos:any): Observable<any>{
+    return this.http.get(this.Api + "/medico/citas/"+datos);
+  }
+
+  obtiene_id_medico(datos:any): Observable<any>{
+    return this.http.get(this.Api + "/medico/"+datos);
+  }
+
 }
