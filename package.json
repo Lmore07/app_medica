@@ -1,9 +1,9 @@
 {
   "name": "app-medica",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
+    "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
@@ -40,9 +40,5 @@
     "karma-jasmine": "~5.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "typescript": "~4.7.2"
-  },
-  "engines": {
-    "npm": "6.14.8",
-    "node": "14.15.1"
   }
 }
