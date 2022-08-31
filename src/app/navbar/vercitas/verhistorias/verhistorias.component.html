@@ -7,60 +7,37 @@
     <strong><a [routerLink]="['/menu']"> <i class='bx bxs-left-arrow'></i> Volver al menú</a></strong>
 </div>
     <form class="navbar-form navbar-left" role="search">
-        <div class="form-group"> <input type="text" class="form-control" placeholder="Buscar"> </div> <button
-            type="submit" class="btn btn-default"><i class='bx bx-search-alt'></i></button>
+        <div class="form-group"> <input id="ced_buscar" type="text"  class="form-control" placeholder="cedula"> </div> <button
+            type="button" (click)="busqueda()" class="btn btn-default"><i class='bx bx-search-alt'></i></button>
     </form>
 
     <table class="text-center">
         <thead>
             <tr>
                 <th>N° Expediente</th>
+                <th>Cédula</th>
                 <th>Nombres</th>
                 <th>Fecha de ingreso</th>
-                <th>Doctor</th>
-                <th>Diagnóstico</th>
+                <th>Médico</th>
+                <th>Especialidad</th>
+                <th>Hora de Cita</th>
+                <th>Estado de Cita</th>
                 <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Cell 1</td>
-                <td>Cell 2</td>
-                <td>Cell 3</td>
-                <td>Cell 4</td>
-                <td>Cell 5</td>
+            <tr *ngFor="let cita of citas;let control=index">
+                <td>{{cita.id_cita}}</td>
+                <td>{{cita.cedula}}</td>
+                <td>{{cita.nombres}}</td>
+                <td>{{cita.fecha}}</td>
+                <td>{{cita.medico}}</td>
+                <td>{{cita.especialidad}}</td>
+                <td>{{cita.atencion}}</td>
+                <td>{{cita.estado}}</td>
                 <td>
-                    <a class="btn btn-info"><i class='bx bxs-edit'></i></a>
-                    <a class="btn btn-danger"><i class='bx bx-x-circle'></i></a>
+                    <a class="btn btn-info" *ngIf="cita.estado=='ATENDIDO'" (click)="informacion(cita.id_cita)" ><i class='bx bx-info-circle'></i></a>
                 </td>
-            </tr>
-            <tr>
-                <td>Cell 1</td>
-                <td>Cell 2</td>
-                <td>Cell 3</td>
-                <td>Cell 4</td>
-                <td>Cell 5</td>
-            </tr>
-            <tr>
-                <td>Cell 1</td>
-                <td>Cell 2</td>
-                <td>Cell 3</td>
-                <td>Cell 4</td>
-                <td>Cell 5</td>
-            </tr>
-            <tr>
-                <td>Cell 1</td>
-                <td>Cell 2</td>
-                <td>Cell 3</td>
-                <td>Cell 4</td>
-                <td>Cell 5</td>
-            </tr>
-            <tr>
-                <td>Cell 1</td>
-                <td>Cell 2</td>
-                <td>Cell 3</td>
-                <td>Cell 4</td>
-                <td>Cell 5</td>
             </tr>
         </tbody>
     </table>

@@ -1,5 +1,6 @@
 <div class="container">
     <h2 class="active"> Listado de citas médicas </h2>
+    <br>
     <div class="fadeIn first">
         <img src="assets/img/MediLogo2.png" id="icon" alt="Icon" />
     </div>
@@ -25,8 +26,9 @@
 				<td>{{cita.fecha}}</td>
 				<td>{{cita.estado}}</td>
                 <td>
-                    <a class="btn btn-info" (click)="agendar(cita.id_cita, cita.id_turno,cita.id_medico,cita.especialidad,cita.fecha,cita.hora_empieza)"><i class='bx bxs-edit'></i></a>
-                    <a class="btn btn-danger" (click)="borrar(cita.id_turno,control)"><i class='bx bx-x-circle'></i></a>
+                    <a class="btn btn-info" *ngIf="cita.estado=='PENDIENTE'" (click)="agendar(cita.id_cita, cita.id_turno,cita.id_medico,cita.especialidad,cita.fecha,cita.hora_empieza)"><i class='bx bxs-edit'></i></a>
+                    <a class="btn btn-info" *ngIf="cita.estado=='ATENDIDO'" (click)="informacion(cita.id_cita)" ><i class='bx bx-info-circle'></i></a>
+                    <a class="btn btn-danger" *ngIf="cita.estado=='PENDIENTE'" (click)="borrar(cita.id_turno,control)"><i class='bx bx-x-circle'></i></a>
                 </td>
 			</tr>
 		</tbody>

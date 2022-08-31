@@ -95,16 +95,6 @@ export class HistoriaComponent implements OnInit {
             this.receta.push(json);
             this.recetar();
           }else{
-            this.alertas("error","Ingrese todos los campos","");
-            this.recetar();
-          }
-        }else if (resultado.isDenied){
-          if(resultado.value[0]!=undefined && resultado.value[1]!=undefined && resultado.value[2]!=undefined){
-            var jsonTexto = '{"medicamento":"'+resultado.value[0]+'","cantidad":"'+resultado.value[1]+'","descripcion":"'+resultado.value[2]+'"}';
-            var json=JSON.parse(jsonTexto);
-            this.receta.push(json);
-          }else{
-            this.alertas("error","Ingrese todos los campos","");
             this.recetar();
           }
         }

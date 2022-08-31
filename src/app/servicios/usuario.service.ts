@@ -59,6 +59,10 @@ export class UsuarioService {
     return this.http.delete(this.Api + "/pacientes/eliminar/"+datos);
   }
 
+  info_citas(datos:any): Observable<any>{
+    return this.http.get(this.Api + "/paciente/citas/info/"+datos);
+  }
+
   eliminar_medicos(datos:any): Observable<any>{
     return this.http.delete(this.Api + "/pacientes/eliminar/"+datos);
   }
@@ -70,6 +74,15 @@ export class UsuarioService {
   obtener_citas_medico(datos:any): Observable<any>{
     return this.http.get(this.Api + "/medico/citas/"+datos);
   }
+  
+  obtener_citas(): Observable<any>{
+    return this.http.get(this.Api + "/citas/generales");
+  }
+
+  busqueda_citas(cedula:any): Observable<any>{
+    return this.http.get(this.Api + "/busqueda/citas/"+cedula);
+  }
+
 
   obtiene_id_medico(datos:any): Observable<any>{
     return this.http.get(this.Api + "/medico/"+datos);
