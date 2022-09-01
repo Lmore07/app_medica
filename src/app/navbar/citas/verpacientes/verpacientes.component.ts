@@ -29,7 +29,7 @@ export class VerpacientesComponent implements OnInit {
     
   }
 
-  atender(id:any,id_pac:any,id_cita:any,id_turno){
+  atender(id:any,id_pac:any,id_cita:any,id_turno:any){
     sessionStorage.setItem('atencion',id);
     sessionStorage.setItem('paciente',id_pac);
     sessionStorage.setItem('cita',id_cita);
