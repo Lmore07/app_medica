@@ -24,7 +24,7 @@
 				<td> {{paciente.hora_termina}}</td>
                 <td>
 					<a *ngIf="paciente.estado=='ATENDIDO'" (click)="borrar(paciente.id,control)" class="btn btn-success"><i class='bx bx-check-circle bx-lg bx-border-circle'></i></a>
-                    <a *ngIf="paciente.estado=='PENDIENTE'" (click)="atender(paciente.cedula,paciente.id,paciente.id_cita)" class="btn btn-danger"><i class='bx bx-check-circle bx-lg bx-border-circle'></i></a>
+                    <a *ngIf="paciente.estado=='PENDIENTE'" (click)="atender(paciente.cedula,paciente.id,paciente.id_cita,paciente.id_turno)" class="btn btn-danger"><i class='bx bx-check-circle bx-lg bx-border-circle'></i></a>
 				</td>
 			</tr>
 		</tbody>

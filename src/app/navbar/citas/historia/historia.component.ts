@@ -31,7 +31,7 @@ export class HistoriaComponent implements OnInit {
     {
       if(this.receta.length > 0){
         let fecha=moment().format("YYYY-MM-DD");
-        this.user_service.insertar_diagnosticos({id_cita:sessionStorage.getItem("cita"), diagnostico:this.loginForm.value.diagnostico,observaciones:this.loginForm.value.observaciones,motivo_ingreso:this.loginForm.value.motivo,id_paciente:sessionStorage.getItem("paciente"),fecha:fecha,medicacion:this.receta}).subscribe(resp =>{
+        this.user_service.insertar_diagnosticos({id_cita:sessionStorage.getItem("cita"), diagnostico:this.loginForm.value.diagnostico,observaciones:this.loginForm.value.observaciones,motivo_ingreso:this.loginForm.value.motivo,id_paciente:sessionStorage.getItem("paciente"),fecha:fecha,medicacion:this.receta,id_turnos:sessionStorage.getItem("turno")}).subscribe(resp =>{
           if(resp.estado==1){
             this.alertas("success",resp.mensaje,"");
           }else{
