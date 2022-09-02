@@ -35,7 +35,10 @@ export class PerfilComponent implements OnInit {
     }
     //Campos llenos
     if (this.submitted) {
-      this.user_service
+      var regex = /^[0-9]+$/;
+      var regex_letras = /^[a-zA-Z]+$/;
+      if (regex.test(this.loginForm.value.cedula) && regex.test(this.loginForm.value.celular) && regex_letras.test(this.loginForm.value.apellidos) && regex_letras.test(this.loginForm.value.nombres) )  {
+        this.user_service
         .actualizar_datos({
           id: sessionStorage.getItem('id'),
           cedula: sessionStorage.getItem('ced'),
@@ -54,6 +57,9 @@ export class PerfilComponent implements OnInit {
             this.alertas('error', resp.mensaje, '');
           }
         });
+      }else{
+        this.alertas('error', "Verifique los campos ingresados", '');
+      }
     }
   }
 

@@ -102,14 +102,24 @@ especialidad:any;
     hora_inicio= moment(hora_inicio).minutes(parseInt(horas[1]));
     let hora_inicio_string=moment(hora_inicio).format("HH:mm");
     let hora_fin_string=moment(hora_inicio).add(1, 'hours').format("HH:mm");
-    this.user_service.registro_cita_turno({hora_empieza:hora_inicio_string, hora_termina:hora_fin_string, fecha:fecha, id_medico:this.loginForm.value.medico,id_paciente:sessionStorage.getItem("id")}).subscribe(resp =>{
-      if(resp.estado==1){
-        this.alertas("success",resp.mensaje,"");
-      }else{
-        this.alertas("error", resp.mensaje,"");
-      }
-      CitasComponent.reagendar=false;
-    });
+    if(CitasComponent.reagendar){
+      this.user_service.modifica_datos_cita({hora_empieza:hora_inicio_string, hora_termina:hora_fin_string, fecha:fecha, id_medico:this.loginForm.value.medico,id_turno:CitasComponent.id_turno}).subscribe(response => {
+        if(response.estado==1){
+          this.alertas("success",response.mensaje,"");
+        }else{
+          this.alertas("error", response.mensaje,"");
+        }
+        CitasComponent.reagendar=false;
+      });
+    }else{
+      this.user_service.registro_cita_turno({hora_empieza:hora_inicio_string, hora_termina:hora_fin_string, fecha:fecha, id_medico:this.loginForm.value.medico,id_paciente:sessionStorage.getItem("id")}).subscribe(resp =>{
+        if(resp.estado==1){
+          this.alertas("success",resp.mensaje,"");
+        }else{
+          this.alertas("error", resp.mensaje,"");
+        }
+      });
+    }
   }
 
   alertas(icono:any,texto:any, titulo:any){
@@ -124,7 +134,6 @@ especialidad:any;
 
     ngOnInit() {
       this.user_service.obtener_datos_paciente(sessionStorage.getItem("ced")).subscribe(resp => {
-        console.log(resp);
         if (resp.estado == 1){
           this.loginForm= this.formBuilder.group({
             cedula: [resp.cedula, [Validators.required]],
@@ -138,8 +147,8 @@ especialidad:any;
             });
         }
         if(CitasComponent.reagendar){
-          console.log(CitasComponent.hora);
           this.especialidad=this.seleccionar_id_especialidad(CitasComponent.especialidad);
+          this.seleccionar_especialidad();
           this.id_medico=CitasComponent.id_medico;
           this.loginForm= this.formBuilder.group({
             cedula: [resp.cedula, [Validators.required]],

@@ -76,7 +76,7 @@
                 </div>
                 <div class="col-md-6">
                     <label>Fecha de ingreso</label>
-                    <input formControlName="fecha_registro" [ngClass]="{ 'is-invalid': submitted && f.fecha_registro.errors}" type="date" id="fecha_registro" class="fadeIn second" name="fecha_registro">
+                    <input readonly formControlName="fecha_registro" [ngClass]="{ 'is-invalid': submitted && f.fecha_registro.errors}" type="date" id="fecha_registro" class="fadeIn second" name="fecha_registro">
                     <div *ngIf="submitted && f.fecha_registro.errors" class="invalid-feedback">
                         <div *ngIf="f.fecha_registro.errors.required">*La fecha de nacimiento es obligatoria</div>
                      </div>
