@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
 import Swal from 'sweetalert2';
 
@@ -10,9 +11,12 @@ import Swal from 'sweetalert2';
 export class Administrador2Component implements OnInit {
 
   pacientes:any;
-  constructor(public userService:UsuarioService) { }
+  constructor(public userService:UsuarioService,public router:Router) { }
 
   ngOnInit(): void {
+    if(sessionStorage.getItem("login") == null) {
+      this.router.navigate(['/inicio']);
+    }
     this.userService.obtener_pacientes().subscribe(response => {
       this.pacientes = response;
     });

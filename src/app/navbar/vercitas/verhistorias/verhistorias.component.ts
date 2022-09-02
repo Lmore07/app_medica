@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
 import Swal from 'sweetalert2';
 
@@ -11,9 +12,12 @@ export class VerhistoriasComponent implements OnInit {
 
   citas:any;
 
-  constructor(private userService: UsuarioService) { }
+  constructor(private userService: UsuarioService,public router:Router) { }
 
   ngOnInit(): void {
+    if(sessionStorage.getItem("login") == null) {
+      this.router.navigate(['/inicio']);
+    }
     this.userService.obtener_citas().subscribe(data => {
       for (let i = 0; i < data.length; i++) {
         var fecha:String=data[i].fecha;

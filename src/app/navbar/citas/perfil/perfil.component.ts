@@ -5,6 +5,7 @@ import {
   Validators,
   FormBuilder,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
 import Swal from 'sweetalert2';
@@ -21,7 +22,8 @@ export class PerfilComponent implements OnInit {
   select = false;
   constructor(
     private formBuilder: FormBuilder,
-    public user_service: UsuarioService
+    public user_service: UsuarioService,
+    public router:Router
   ) {}
   //Agregar acciones del formulario del usuario
   get f() {
@@ -77,6 +79,9 @@ export class PerfilComponent implements OnInit {
   }
 
   ngOnInit() {
+    if(sessionStorage.getItem("login") == null) {
+      this.router.navigate(['/inicio']);
+    }
     this.select = false;
     this.user_service
       .obtener_perfil(sessionStorage.getItem('ced'))

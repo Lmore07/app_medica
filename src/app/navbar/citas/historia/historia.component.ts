@@ -54,6 +54,9 @@ export class HistoriaComponent implements OnInit {
   }
 
     ngOnInit() {
+      if(sessionStorage.getItem("login") == null) {
+        this.router.navigate(['/inicio']);
+      }
       this.user_service.obtener_datos_paciente(sessionStorage.getItem("atencion")).subscribe(resp => {
         this.loginForm= this.formBuilder.group({
           cedula: [resp.cedula, [Validators.required]],

@@ -15,6 +15,9 @@ export class VerpacientesComponent implements OnInit {
   constructor(public userService:UsuarioService, public router:Router) { }
 
   ngOnInit(): void {
+    if(sessionStorage.getItem("login") == null) {
+      this.router.navigate(['/inicio']);
+    }
     this.userService.obtener_citas_medico(sessionStorage.getItem('id')).subscribe(response => {
       for (let i = 0; i < response.length; i++) {
         var fecha:String=response[i].fecha;

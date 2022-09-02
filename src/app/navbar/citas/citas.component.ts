@@ -3,6 +3,7 @@ import { FormControl,FormGroup,Validators,FormBuilder } from '@angular/forms';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
 import * as moment from 'moment';
 import Swal from 'sweetalert2'
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,9 +15,20 @@ export class CitasComponent implements OnInit {
   loginForm : any = FormGroup;
   medicos:any;
   submitted = false;
-  constructor( private formBuilder: FormBuilder,public user_service:UsuarioService){}
-  //Agregar acciones del formulario del usuario
+  especialidad:any;
+  static id_cita:any;
+  static id_turno:any;
+  static fecha:any;
+  static especialidad:any;
+  static id_medico:any;
+  static hora:any;
+  static reagendar=false;
+  id_medico:any;
+
+  constructor( private formBuilder: FormBuilder,public user_service:UsuarioService,public router:Router){}
+
   get f() { return this.loginForm.controls; }
+
   onSubmit() {
     this.submitted = true;
     // Detenerse si el formulario no es válido
@@ -30,8 +42,6 @@ export class CitasComponent implements OnInit {
     }
    
   }
-
-especialidad:any;
 
   seleccionar_especialidad(){
     this.medicos=[]
@@ -94,6 +104,7 @@ especialidad:any;
   }
 
   agendar(){
+
     let hora_inicio: moment.Moment = moment(this.loginForm.value.fechaCita);
     let fecha=moment(hora_inicio).format("YYYY-MM-DD");
     let hora :String=this.loginForm.value.hora;
@@ -130,55 +141,49 @@ especialidad:any;
     })
   }
 
-  id_medico:any;
-
-    ngOnInit() {
-      this.user_service.obtener_datos_paciente(sessionStorage.getItem("ced")).subscribe(resp => {
-        if (resp.estado == 1){
-          this.loginForm= this.formBuilder.group({
-            cedula: [resp.cedula, [Validators.required]],
-            nombres: [resp.nombres, [Validators.required]],
-            apellidos: [resp.apellidos, [Validators.required]],
-            edad: [resp.edad, [Validators.required]],
-            fechaCita: ['', [Validators.required]],
-            hora: ['', [Validators.required]],
-            especialidad_: ['', [Validators.required]],
-            medico: ['', [Validators.required]]
-            });
-        }
-        if(CitasComponent.reagendar){
-          this.especialidad=this.seleccionar_id_especialidad(CitasComponent.especialidad);
-          this.seleccionar_especialidad();
-          this.id_medico=CitasComponent.id_medico;
-          this.loginForm= this.formBuilder.group({
-            cedula: [resp.cedula, [Validators.required]],
-            nombres: [resp.nombres, [Validators.required]],
-            apellidos: [resp.apellidos, [Validators.required]],
-            edad: [resp.edad, [Validators.required]],
-            fechaCita: [CitasComponent.fecha, [Validators.required]],
-            hora: [CitasComponent.hora, [Validators.required]],
-            especialidad_: [CitasComponent.especialidad, [Validators.required]],
-            medico: [CitasComponent.id_medico, [Validators.required]]
-            });
-        }
-      });
-      this.loginForm= this.formBuilder.group({
-        cedula: ['', [Validators.required]],
-        nombres: ['', [Validators.required]],
-        apellidos: ['', [Validators.required]],
-        edad: ['', [Validators.required]],
-        fechaCita: ['', [Validators.required]],
-        hora: ['', [Validators.required]],
-        especialidad_: ['', [Validators.required]],
-        medico: ['', [Validators.required]]
-        });
+  ngOnInit() {
+    if(sessionStorage.getItem("login") == null) {
+      this.router.navigate(['/inicio']);
     }
-
-    static id_cita:any;
-    static id_turno:any;
-    static fecha:any;
-    static especialidad:any;
-    static id_medico:any;
-    static hora:any;
-    static reagendar=false;
+    this.user_service.obtener_datos_paciente(sessionStorage.getItem("ced")).subscribe(resp => {
+      if (resp.estado == 1){
+        this.loginForm= this.formBuilder.group({
+          cedula: [resp.cedula, [Validators.required]],
+          nombres: [resp.nombres, [Validators.required]],
+          apellidos: [resp.apellidos, [Validators.required]],
+          edad: [resp.edad, [Validators.required]],
+          fechaCita: ['', [Validators.required]],
+          hora: ['', [Validators.required]],
+          especialidad_: ['', [Validators.required]],
+          medico: ['', [Validators.required]]
+          });
+      }
+      if(CitasComponent.reagendar){
+        this.especialidad=this.seleccionar_id_especialidad(CitasComponent.especialidad);
+        this.seleccionar_especialidad();
+        this.id_medico=CitasComponent.id_medico;
+        this.loginForm= this.formBuilder.group({
+          cedula: [resp.cedula, [Validators.required]],
+          nombres: [resp.nombres, [Validators.required]],
+          apellidos: [resp.apellidos, [Validators.required]],
+          edad: [resp.edad, [Validators.required]],
+          fechaCita: [CitasComponent.fecha, [Validators.required]],
+          hora: [CitasComponent.hora, [Validators.required]],
+          especialidad_: [CitasComponent.especialidad, [Validators.required]],
+          medico: [CitasComponent.id_medico, [Validators.required]]
+          });
+      }
+    });
+    this.loginForm= this.formBuilder.group({
+      cedula: ['', [Validators.required]],
+      nombres: ['', [Validators.required]],
+      apellidos: ['', [Validators.required]],
+      edad: ['', [Validators.required]],
+      fechaCita: ['', [Validators.required]],
+      hora: ['', [Validators.required]],
+      especialidad_: ['', [Validators.required]],
+      medico: ['', [Validators.required]]
+      });
   }
+
+}
