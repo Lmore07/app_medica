@@ -35,7 +35,12 @@ export class AdministradorComponent implements OnInit {
 
   aprobar_medico(id:any){
     this.userService.aprobar_medico({id:id}).subscribe(resp => {
-      console.log(resp)
+      if(resp.estado==1){
+        this.alertas("success",resp.mensaje,"");
+        window.location.reload();
+      }else{
+        this.alertas("error",resp.mensaje,"");
+      }
     });
   }
 
