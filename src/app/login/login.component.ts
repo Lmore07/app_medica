@@ -46,7 +46,8 @@ export class LoginComponent implements OnInit {
                 this.alertas("success", resp.mensaje,"");
                 this.router.navigate(['/menu']);
               }else{
-                sessionStorage.setItem("login", "");
+                this.alertas("error", "Por favor, espere que el administrador apruebe su rol","");
+                sessionStorage.removeItem("login");
               }        
             });
           }else{
