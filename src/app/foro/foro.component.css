@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.body{
+    font-family: 'Poppins', sans-serif;
+    background-color:#448E7E;  /*Puede ser una img luego lo pensamos bien */
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.caja{
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.2);
+    width: 80%;
+    padding: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.titulo{
+    text-align: center;
+}
+
+.titulo h6{
+    font-size: 40px;
+    color: #444;
+    margin-bottom: 30px;
+}
+
+
+.scroll-bg{
+    background: #45BE7F;
+    width: 90%;
+    margin: auto;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.scroll-div{
+    width: 100%;
+    background: lightgray;
+    height: 350px;
+    overflow: hidden;
+    overflow-y: scroll;
+    border-radius: 10px;
+}
+
+.scroll-object{
+    color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    padding: 20px;
+}
+
+
+.mensajes-otros-usuarios{
+
+    width: 75%;
+    margin-bottom: -20px;
+    background-color: wheat;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid wheat;
+    border-radius: 10px;
+    padding: 10px 15px;
+}
+
+.mensajes-usuario-actual{
+    margin-left: 25%;
+    width: 75%;
+    margin-bottom: -20px;
+    background-color: rgb(250, 204, 51);
+    border-radius: 10px;
+    padding: 10px;
+    
+    border: 1px solid rgb(250, 204, 51);
+    border-radius: 10px;
+    padding: 10px 15px;
+}
+
+
+.entrada-texto{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 10px 0;
+    grid-gap: 15px;
+}
+
+.entrada-texto textarea{
+    background: lightgray;
+    width: 180%;
+    margin-top: 5px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+}
+
+.entrada-texto button{
+    background-color:#448E7E; 
+    border-radius: 10px;
+    outline: none;
+    border: 0;
+    font-size: 30px;
+    width: 90px;
+    height: 90px;
+    color: white;
+    margin-left: 80%;
+    margin-top: 5px;
+}
+
+#boton-enviar:hover{
+    box-shadow: 0 4px 5px rgba(250, 251, 253, 0.26);
+}
+
+
+fa-icon{
+    color: gold
+}
+
+.botones{
+    text-align: center;
+    margin-top: 30px;
+}
+
+.botones button{
+    background-color:#448E7E; 
+    border-radius: 10px;
+    padding: 7px 15px;
+    outline: none;
+    border: 0;
+    font-size: 17px;
+    width: 240px;
+    color: white;
+}
+
+.botones button:hover{
+    box-shadow: 0 6px 5px rgba(19, 28, 56, 0.26);
+}

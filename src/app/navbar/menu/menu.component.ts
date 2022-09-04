@@ -19,6 +19,11 @@ export class MenuComponent implements OnInit {
     }
   }
 
+  foro(){
+    this.router.navigate(['/foro']);
+    
+  }
+
   salir(){
     sessionStorage.clear();
     this.router.navigate(['/']);

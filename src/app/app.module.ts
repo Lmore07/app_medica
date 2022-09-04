@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +21,7 @@ import { AdministradorComponent } from './navbar/vercitas/administrador/administ
 import { PerfilComponent } from './navbar/citas/perfil/perfil.component';
 import { Administrador2Component } from './navbar/vercitas/administrador2/administrador2.component';
 import { VerpacientesComponent } from './navbar/citas/verpacientes/verpacientes.component';
+import { ForoComponent } from './foro/foro.component';
 
 const routes: Routes = [
   { path: 'opciones', component: OpcionComponent },
@@ -39,11 +40,12 @@ const routes: Routes = [
     LoginComponent,
     DoctorComponent,
     PacienteComponent, 
-    OpcionComponent, NavbarComponent, CitasComponent, MenuComponent, VercitasComponent, HistoriaComponent, VerhistoriasComponent, AdministradorComponent, PerfilComponent, Administrador2Component, VerpacientesComponent
+    OpcionComponent, NavbarComponent, CitasComponent, MenuComponent, VercitasComponent, HistoriaComponent, VerhistoriasComponent, AdministradorComponent, PerfilComponent, Administrador2Component, VerpacientesComponent, ForoComponent
   ],
   imports: [
     HttpClientModule, 
     BrowserModule,
+    FormsModule,
     MatSliderModule,
     AppRoutingModule,
     ReactiveFormsModule

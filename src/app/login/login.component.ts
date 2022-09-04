@@ -36,8 +36,10 @@ export class LoginComponent implements OnInit {
     //Campos llenos
     if (this.submitted) {
       this.user_service.login(this.loginForm.value).subscribe(resp => {
+        console.log(resp);
         if (resp.estado != 0) {
           sessionStorage.setItem("login", resp.estado);
+          sessionStorage.setItem("user", resp.nombres);
           if(resp.estado == 'MEDICO') {
             this.user_service.obtiene_id_medico(resp.id).subscribe(response => {
               if(resp.estado_s=="ACTIVO"){

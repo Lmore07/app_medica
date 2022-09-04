@@ -1,0 +1,33 @@
+<div class="body">
+    <div class="caja" id="screenPreguntas">
+
+        <div class="titulo">
+            <h6>
+               Foro de Ayudas
+            </h6>
+        </div>
+
+        <div class="scroll-bg">
+            <div class="scroll-div" id="contenido">
+                <div class="scroll-object" *ngFor="let chat of mensajes">
+                    <div [ngClass]="devuelve_estilo(chat.user)"><small> {{chat.rol}} </small> <br><b>{{chat.user}}: </b>{{chat.text}}
+                        </div>
+                    
+                </div>
+            </div>
+            <div class="entrada-texto">
+                <textarea [(ngModel)]="userChat.text" placeholder="Escribe un mensaje . . ."></textarea>
+                <button id="boton-enviar" (click)="enviar_mensaje()">
+                    <i class='bx bx-send'></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="botones">
+            <button [routerLink]="['/menu']">
+                ◀ Volver al menú
+            </button>
+        </div>
+
+    </div>
+</div>
