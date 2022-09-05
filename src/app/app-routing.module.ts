@@ -34,7 +34,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'atencion', component: VerpacientesComponent },
   { path: 'foro', component: ForoComponent },
-  { path: '', component: InicioComponent, pathMatch: 'full' },
+  { path: '',redirectTo:'/inicio', pathMatch: 'full' },
   { path: '**', redirectTo: '/inicio', pathMatch: 'full' },  
 ];
 
