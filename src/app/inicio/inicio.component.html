@@ -214,15 +214,7 @@
                                             <h3><a >Consulta Externa</a></h3>
                                             <p>Atención médica a los pacientes ambulatorios con diversas patologías, para su evaluación y su a los servicios de especialidad.</p>
                                        </div>
-  
-                                       <div class="courses-info">
-                                        <div class="courses-author">
-                                             <img src="assets/img/dolar.png" class="img-responsive" alt="">
-                                        </div>
-                                        <div class="courses-price">
-                                             <a ><span>USD 25.00</span></a>
-                                        </div>
-                                   </div>
+
                                   </div>
                              </div>
                         </div>
@@ -244,14 +236,7 @@
                                             <p>Ofrece a nuestras pacientes la mejor atención durante el embarazo y el parto, sea este natural o por cesárea.</p>
                                        </div>
   
-                                       <div class="courses-info">
-                                        <div class="courses-author">
-                                             <img src="assets/img/dolar.png" class="img-responsive" alt="">
-                                        </div>
-                                        <div class="courses-price">
-                                             <a ><span>USD 80.00</span></a>
-                                        </div>
-                                   </div>
+                                       
                                   </div>
                              </div>
                         </div>
@@ -273,14 +258,6 @@
                                             <p>Brinda atención médica a niños de ambos sexos desde los 29 días hasta 14 años 11 meses y 29 días.</p>
                                        </div>
   
-                                       <div class="courses-info">
-                                        <div class="courses-author">
-                                             <img src="assets/img/dolar.png" class="img-responsive" alt="">
-                                        </div>
-                                        <div class="courses-price">
-                                             <a ><span>USD 20.00</span></a>
-                                        </div>
-                                       </div>
                                   </div>
                              </div>
                         </div>
@@ -302,14 +279,6 @@
                                             <p>Encargados de diagnosticar y tratar cualquier problema o incidente médico durante la intervención o en el período posterior.</p>
                                        </div>
   
-                                       <div class="courses-info">
-                                        <div class="courses-author">
-                                             <img src="assets/img/dolar.png" class="img-responsive" alt="">
-                                        </div>
-                                        <div class="courses-price">
-                                             <a ><span>USD 100.00</span></a>
-                                        </div>
-                                       </div>
                                   </div>
                              </div>
                         </div>
@@ -330,15 +299,7 @@
                                             <h3><a >Laboratorio clínico</a></h3>
                                             <p>Oferta exámenes de diversas áreas como hematología, coagulación, inmunología, uroanálisis, parasitología, entre otros.</p>
                                        </div>
-  
-                                       <div class="courses-info">
-                                        <div class="courses-author">
-                                             <img src="assets/img/dolar.png" class="img-responsive" alt="">
-                                        </div>
-                                        <div class="courses-price">
-                                             <a ><span>USD 20.00</span></a>
-                                        </div>
-                                       </div>
+               
                                   </div>
                              </div>
                         </div>
@@ -359,95 +320,22 @@
                         <h2>Médicos <small></small></h2>
                    </div>
   
-                   <div class="owl-carousel owl-theme owl-client">
-                        <div class="col-md-4 col-sm-4">
+                   <div  class="owl-carousel owl-theme owl-client">
+                        <div *ngFor="let medico of medicos" class="col-md-4 col-sm-4">
                              <div class="item">
                                   <div class="tst-image">
-                                       <img src="assets/img/d1.jpg" class="img-responsive" alt="">
+                                       <img src="assets/img/doctor.jpg" class="img-responsive" alt="">
                                   </div>
                                   <div class="tst-author">
-                                       <h4>Giovanni Alejandro Escorza Velez</h4>
-                                       <span>Ginecología Y Obstetricia</span>
+                                       <h4>{{medico.nombres}} {{medico.apellidos}}</h4>
+                                       <span>{{medico.especialidad}}</span>
                                        <ul class="social-icon">
-                                        <li><a href="#" class="fa fa-facebook-square" attr="facebook icon"></a></li>
-                                        <li><a href="#" class="fa fa-twitter"></a></li>
-                                        <li><a href="#" class="fa fa-instagram"></a></li>
+                                        <li><a (click)="copiar(medico.correo)" class="fa fa-envelope" ></a></li>
                                    </ul>
                                   </div>
                                   <p></p>
                              </div>
                         </div>
-  
-                        <div class="col-md-4 col-sm-4">
-                             <div class="item">
-                                  <div class="tst-image">
-                                       <img src="assets/img/d2.jpg" class="img-responsive" alt="">
-                                  </div>
-                                  <div class="tst-author">
-                                       <h4>Patricia Alexandra Andrade Carrera</h4>
-                                       <span>Cirugía Pediátricar</span>
-                                       <ul class="social-icon">
-                                        <li><a href="#" class="fa fa-facebook-square" attr="facebook icon"></a></li>
-                                        <li><a href="#" class="fa fa-twitter"></a></li>
-                                        <li><a href="#" class="fa fa-instagram"></a></li>
-                                   </ul>
-                                  </div>
-                             </div>
-                        </div>
-  
-                        <div class="col-md-4 col-sm-4">
-                             <div class="item">
-                                  <div class="tst-image">
-                                       <img src="assets/img/d3.jpg" class="img-responsive" alt="">
-                                  </div>
-                                  <div class="tst-author">
-                                       <h4>Fabian Edgar Vasconez Muñoz</h4>
-                                       <span>Gastroenterología Pediátrica / Pediatría</span>
-                                       <ul class="social-icon">
-                                        <li><a href="#" class="fa fa-facebook-square" attr="facebook icon"></a></li>
-                                        <li><a href="#" class="fa fa-twitter"></a></li>
-                                        <li><a href="#" class="fa fa-instagram"></a></li>
-                                   </ul>
-                                  </div>
-                                  
-                             </div>
-                        </div>
-  
-                        <div class="col-md-4 col-sm-4">
-                             <div class="item">
-                                  <div class="tst-image">
-                                       <img src="assets/img/d4.jpg" class="img-responsive" alt="">
-                                   </div>
-                                  <div class="tst-author">
-                                       <h4>Monica Florencia Estupiñan Saltos</h4>
-                                       <span>Cuidados Intensivos</span>
-                                       <ul class="social-icon">
-                                        <li><a href="#" class="fa fa-facebook-square" attr="facebook icon"></a></li>
-                                        <li><a href="#" class="fa fa-twitter"></a></li>
-                                        <li><a href="#" class="fa fa-instagram"></a></li>
-                                   </ul>
-
-                                  </div>
-                             </div>
-                        </div>
-                        <div class="col-md-4 col-sm-4">
-                         <div class="item">
-                              <div class="tst-image">
-                                   <img src="assets/img/d5.jpg" class="img-responsive" alt="">
-                               </div>
-                              <div class="tst-author">
-                                   <h4>Laura Ximena Ruiz Flores</h4>
-                                   <span>Cirugía General</span>
-                                   <ul class="social-icon">
-                                    <li><a href="#" class="fa fa-facebook-square" attr="facebook icon"></a></li>
-                                    <li><a href="#" class="fa fa-twitter"></a></li>
-                                    <li><a href="#" class="fa fa-instagram"></a></li>
-                               </ul>
-
-                              </div>
-                         </div>
-                    </div>
-  
                    </div>
                </div>
           </div>
@@ -461,17 +349,17 @@
          <div class="row">
   
               <div class="col-md-6 col-sm-12">
-                   <form id="contact-form" role="form" action="" method="post">
+                   <form [formGroup]="form_contacto" id="contact-form" role="form" (ngSubmit)="onSubmit()">
                         <div class="section-title">
                              <h2>Contactanos <small></small></h2>
                         </div>
   
                         <div class="col-md-12 col-sm-12">
-                             <input type="text" class="form-control" placeholder="Ingresar Nombre" name="name" required="">
+                             <input type="text" class="form-control" formControlName="nombre" id="nombre" placeholder="Ingresar Nombre" name="name" required="">
               
-                             <input type="email" class="form-control" placeholder="Ingresar Correo Electrónico" name="email" required="">
+                             <input type="email" class="form-control" formControlName="correo" id="correo" placeholder="Ingresar Correo Electrónico" name="email" required="">
   
-                             <textarea class="form-control" rows="6" placeholder="Ingresae su mensaje" name="message" required=""></textarea>
+                             <textarea class="form-control" rows="6" formControlName="mensaje" id="mensaje" placeholder="Ingresae su mensaje" name="message" required=""></textarea>
                         </div>
   
                         <div class="col-md-4 col-sm-12">

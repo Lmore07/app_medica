@@ -26,21 +26,48 @@ export class PacienteComponent implements OnInit {
     //Campos llenos
     if(this.submitted)
     {
-      var regex = /^[0-9]+$/;
-      var regex_letras = /^[a-zA-Z]+$/;
-      var regex_correo = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      if (regex.test(this.loginForm.value.cedula) && regex.test(this.loginForm.value.celular) && regex_correo.test(this.loginForm.value.correo) && regex_letras.test(this.loginForm.value.apellidos) && regex_letras.test(this.loginForm.value.nombres) )  {
-        this.user_service.registro({correo:this.loginForm.value.correo,cedula:this.loginForm.value.cedula,nombres:this.loginForm.value.nombres,apellidos:this.loginForm.value.apellidos, password:this.loginForm.value.password,fecha_naci:this.loginForm.value.fecha_naci,fecha_registro:'',especialidad:'',rol:'PACIENTE',direccion:this.loginForm.value.direccion,celular:this.loginForm.value.celular}).subscribe(resp => {
+      this.user_service.registro({correo:this.loginForm.value.correo,cedula:this.loginForm.value.cedula,nombres:this.loginForm.value.nombres,apellidos:this.loginForm.value.apellidos, password:this.loginForm.value.password,fecha_naci:this.loginForm.value.fecha_naci,fecha_registro:'',especialidad:'',rol:'PACIENTE',direccion:this.loginForm.value.direccion,celular:this.loginForm.value.celular}).subscribe(resp => {
           if(resp.estado){
             this.alertas("success",resp.mensaje,"");
             this.router.navigateByUrl("/login");
           }else{
             this.alertas("error", resp.mensaje,"");
           }
-        });
-      }else {
-        this.alertas("error", "Verifique que los campos ingresados sean correctos","");
-      }
+      });
+    }
+  }
+
+  val_correo:any=true;
+
+  valida_correo(){
+    console.log("valida_correo");
+    console.log(this.loginForm.value.correo)
+    var regex_correo = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if(regex_correo.test(this.loginForm.value.correo)){
+      this.val_correo=false;
+    }else{
+      this.val_correo=true;
+    }
+  }
+
+  solo_letras(evento:any){
+    var regex_letras = /^[a-zA-Z\s]*$/;
+    if(regex_letras.test(evento.key)){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  solo_numeros(evento:any){
+    var regex = /^[0-9]+$/;
+    if(evento.keycode==8 || evento.keycode==46){
+      return true;
+    }
+    if(regex.test(evento.key)){
+      return true;
+    }else{
+      return false;
     }
   }
 
@@ -55,7 +82,7 @@ export class PacienteComponent implements OnInit {
     ngOnInit() {
       
       this.loginForm= this.formBuilder.group({
-      correo: ['', [Validators.required, Validators.email]],
+      correo: ['', [Validators.required]],
       password: ['', [Validators.required]],
       nombres: ['', [Validators.required]],
       apellidos: ['', [Validators.required]],

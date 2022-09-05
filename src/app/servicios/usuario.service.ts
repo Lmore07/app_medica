@@ -7,12 +7,16 @@ import { Observable } from 'rxjs';
 })
 export class UsuarioService {
 
-  Api: string = "https://app-medica-api.herokuapp.com/api";
+  //Api: string = "https://app-medica-api.herokuapp.com/api";
   
-  //Api: string = "http://localhost:3356/api";
+  Api: string = "http://localhost:3356/api";
 
 
   constructor(public http: HttpClient) { }
+
+  turnos(datos:any): Observable<any> {
+    return this.http.post(this.Api + "/turnos",datos);
+  }
 
   registro(datos:any): Observable<any> {
     return this.http.post(this.Api + "/usuarios/registro",datos);
@@ -56,6 +60,10 @@ export class UsuarioService {
 
   obtener_medicos(): Observable<any>{
     return this.http.get(this.Api + "/admin/usuarios/medicos");
+  }
+
+  medicos_Activos(): Observable<any>{
+    return this.http.get(this.Api + "/usuarios/medicos");
   }
 
   obtener_pacientes(): Observable<any>{

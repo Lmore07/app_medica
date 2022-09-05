@@ -19,12 +19,16 @@ export class VerpacientesComponent implements OnInit {
       this.router.navigate(['/inicio']);
     }
     this.userService.obtener_citas_medico(sessionStorage.getItem('id')).subscribe(response => {
+      console.log(response);
+      if (response.length==0 || response.estado==0) {
+        this.alertas("error","No tiene citas pendientes","");
+      }
       for (let i = 0; i < response.length; i++) {
         var fecha:String=response[i].fecha;
         response[i].fecha = fecha.substring(0, 10);
       }
       this.pacientes = response;
-      console.log(response);
+      
     });
   }
 

@@ -16,7 +16,8 @@ export class DoctorComponent implements OnInit {
   submitted = false;
   constructor( private formBuilder: FormBuilder,public user_service:UsuarioService, public router:Router) {}
   //Agregar acciones del formulario del usuario
-  get f() { return this.loginForm.controls; }
+  get f() { 
+    return this.loginForm.controls; }
   onSubmit() {
     this.submitted = true;
     // Detenerse si el formulario no es válido
@@ -26,10 +27,6 @@ export class DoctorComponent implements OnInit {
     //Campos llenos
     if(this.submitted)
     {
-      var regex = /^[0-9]+$/;
-      var regex_letras = /^[a-zA-Z]+$/;
-      var regex_correo = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      if (regex.test(this.loginForm.value.cedula) && regex.test(this.loginForm.value.celular) && regex_correo.test(this.loginForm.value.correo) && regex_letras.test(this.loginForm.value.apellidos) && regex_letras.test(this.loginForm.value.nombres) )  {
         this.user_service.registro({correo:this.loginForm.value.correo,cedula:this.loginForm.value.cedula,nombres:this.loginForm.value.nombres,apellidos:this.loginForm.value.apellidos, password:this.loginForm.value.password,fecha_naci:this.loginForm.value.fecha_naci,fecha_registro:this.loginForm.value.fecha_registro,especialidad:this.loginForm.value.especialidad,rol:'MEDICO',direccion:this.loginForm.value.direccion,celular:this.loginForm.value.celular}).subscribe(resp => {
           console.log(resp);
           if(resp.estado==1){
@@ -39,14 +36,8 @@ export class DoctorComponent implements OnInit {
             this.alertas("error", resp.mensaje,"");
           }
         });
-      } else {
-        this.alertas("error", "Verifique que los campos ingresados sean correctos","");
-      } 
-      
     }
   }
-
-  
 
   alertas(icono:any,texto:any, titulo:any){
     Swal.fire({
@@ -55,10 +46,46 @@ export class DoctorComponent implements OnInit {
       text: texto
     })
   }
+
+  val_correo:any=true;
+
+  valida_correo(evento:any){
+      var regex_correo = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      if(regex_correo.test(this.loginForm.value.correo)){
+        this.val_correo=false;
+      }else{
+        this.val_correo=true;
+      }
+      return true;
+  }
+
+  solo_letras(evento:any){
+    var regex_letras = /^[a-zA-Z\s]*$/;
+    if(regex_letras.test(evento.key)){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  solo_numeros(evento:any){
+    var regex = /^[0-9]+$/;
+    if(evento.keycode==8 || evento.keycode==46){
+      return true;
+    }
+    if(regex.test(evento.key)){
+      return true;
+    }else{
+      return false;
+    }
+  }
     ngOnInit() {
       let fecha=moment().format("YYYY-MM-DD");
+      let fecha_minima=moment().subtract(18, 'years').format("YYYY-MM-DD");
+      let fecha_naci:HTMLInputElement=document.querySelector("input[name='fecha_naci']");
+      fecha_naci.max = fecha_minima;
       this.loginForm= this.formBuilder.group({
-      correo: ['', [Validators.required, Validators.email]],
+      correo: ['', [Validators.required]],
       password: ['', [Validators.required]],
       cedula: ['', [Validators.required]],
       nombres: ['', [Validators.required]],

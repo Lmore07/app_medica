@@ -15,12 +15,12 @@
                <ul class="nav navbar-nav navbar-nav-first" routerLinkActive="active">
                     <li *ngIf="seleccionado=='ADMINISTRADOR'" class="nav-item dropdown">
                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                             ADMINISTRADOR
+                             Usuarios del Sistema
                          </a>
                          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                          <li><a class="smoothScroll dropdown-item"></a></li>
                          <li><a class="smoothScroll dropdown-item" [routerLink]="['/administrador']"> Ver listado de Medicos</a></li>
-                         <li><a class="smoothScroll dropdown-item" [routerLink]="['/administrador2']">Ver lista de Usuarios</a></li>
+                         <li><a class="smoothScroll dropdown-item" [routerLink]="['/administrador2']">Ver lista de Pacientes</a></li>
                          </div>
                        </li>                 <li *ngIf="seleccionado=='PACIENTE'" class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -34,11 +34,11 @@
                    </li>
                    <li *ngIf="seleccionado=='MEDICO'" class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                         Historia Clínica
+                         Atención de Pacientes
                      </a>
                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                      <li><a class="smoothScroll dropdown-item"></a></li>
-                     <li><a class="smoothScroll dropdown-item" [routerLink]="['/atencion']">Crear Historia clínica</a></li>
+                     <li><a class="smoothScroll dropdown-item" [routerLink]="['/atencion']">Registrar diagnóstico</a></li>
                      <li><a class="smoothScroll dropdown-item" [routerLink]="['/verhistorias']">Buscar Historia clínica</a></li>
                      </div>
                    </li>

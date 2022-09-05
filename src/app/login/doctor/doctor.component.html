@@ -14,14 +14,14 @@
             <div class="row">
                 <div class="col-md-6">
                     <label>Nombres</label>
-                    <input formControlName="nombres" [ngClass]="{ 'is-invalid': submitted && f.nombres.errors}" type="text" id="nombres" class="fadeIn second" name="nombres">
+                    <input maxlength="40" formControlName="nombres" (keydown)="solo_letras($event)" [ngClass]="{ 'is-invalid': submitted && f.nombres.errors}" type="text" id="nombres" class="fadeIn second" name="nombres">
                     <div *ngIf="submitted && f.nombres.errors" class="invalid-feedback">
                         <div *ngIf="f.nombres.errors.required">*El nombre es obligatorio</div>
                      </div>
                 </div>
                 <div class="col-md-6">
                     <label>Apellidos</label>
-                    <input formControlName="apellidos" [ngClass]="{ 'is-invalid': submitted && f.apellidos.errors}" type="text" id="apellidos" class="fadeIn second" name="apellidos">
+                    <input maxlength="40" formControlName="apellidos" (keydown)="solo_letras($event)" [ngClass]="{ 'is-invalid': submitted && f.apellidos.errors}" type="text" id="apellidos" class="fadeIn second" name="apellidos">
                     <div *ngIf="submitted && f.apellidos.errors" class="invalid-feedback">
                         <div *ngIf="f.apellidos.errors.required">*El apellido es obligatorio</div>
                      </div>
@@ -38,7 +38,7 @@
 
                 <div class="col-md-6">
                     <label>Fecha Nacimiento</label>
-                    <input formControlName="fecha_naci" [ngClass]="{ 'is-invalid': submitted && f.fecha_naci.errors}" type="date" id="fecha_naci" class="fadeIn second" name="fecha_naci">
+                    <input formControlName="fecha_naci" onkeydown="return false" [ngClass]="{ 'is-invalid': submitted && f.fecha_naci.errors}" type="date" id="fecha_naci" class="fadeIn second" name="fecha_naci">
                     <div *ngIf="submitted && f.fecha_naci.errors" class="invalid-feedback">
                         <div *ngIf="f.fecha_naci.errors.required">*La fecha de nacimiento es obligatoria</div>
                      </div>
@@ -47,14 +47,14 @@
             <div class="row">
                 <div class="col-md-6">
                     <label>Cédula de identidad</label>
-                    <input formControlName="cedula" [ngClass]="{ 'is-invalid': submitted && f.cedula.errors}" type="text" id="cedula" class="fadeIn second" name="cedula" maxlength="10">
+                    <input formControlName="cedula" (keypress)="solo_numeros($event)" [ngClass]="{ 'is-invalid': submitted && f.cedula.errors}" type="text" id="cedula" class="fadeIn second" name="cedula" maxlength="10">
                     <div *ngIf="submitted && f.cedula.errors" class="invalid-feedback">
                         <div *ngIf="f.cedula.errors.required">*La cédula de identidad es obligatoria</div>
                      </div>
                 </div>
                 <div class="col-md-6">
                     <label>Teléfono</label>
-                    <input formControlName="celular" [ngClass]="{ 'is-invalid': submitted && f.celular.errors}" type="text" id="celular" class="fadeIn second" name="celular" maxlength="10">
+                    <input formControlName="celular" (keypress)="solo_numeros($event)" [ngClass]="{ 'is-invalid': submitted && f.celular.errors}" type="text" id="celular" class="fadeIn second" name="celular" maxlength="10">
                     <div *ngIf="submitted && f.celular.errors" class="invalid-feedback">
                         <div *ngIf="f.celular.errors.required">*El número de teléfono es obligatorio</div>
                      </div>
@@ -85,15 +85,15 @@
             <div class="row">
                 <div class="col-md-6">
                     <label>Correo eléctronico</label>
-                    <input formControlName="correo" [ngClass]="{ 'is-invalid': submitted && f.correo.errors }" type="text" id="correo" class="fadeIn second" name="correo" placeholder="usuario@ejemplo.com">
-                    <div *ngIf="submitted && f.correo.errors" class="invalid-feedback" id="error">
-                        <div *ngIf="f.correo.errors.required">*El correo electrónico es obligatorio</div>
-                        <div *ngIf="f.correo.errors.email">*El correo electrónico debe ser válido</div>
+                    <input formControlName="correo" (keyup)="valida_correo($event)" [ngClass]="{ 'is-invalid': val_correo && f.correo.errors }" type="text" id="correo" class="fadeIn second" name="correo" placeholder="usuario@ejemplo.com">
+                    <div *ngIf="val_correo || f.correo.value==''" class="invalid-feedback" id="error">
+                        <div *ngIf="f.correo.value==''">*El correo electrónico es obligatorio</div>
+                        <div *ngIf="val_correo">*El correo electrónico debe ser válido</div>
                      </div>
                 </div>
                 <div class="col-md-6">
                     <label>Contraseña</label>
-                    <input formControlName="password"[ngClass]="{ 'is-invalid': submitted && f.password.errors }" type="password" id="password" class="fadeIn second" name="password">
+                    <input maxlength="12" formControlName="password"[ngClass]="{ 'is-invalid': submitted && f.password.errors }" type="password" id="password" class="fadeIn second" name="password">
                     <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                         <div *ngIf="f.password.errors.required">*La contraseña es obligatoria</div>
                      </div>

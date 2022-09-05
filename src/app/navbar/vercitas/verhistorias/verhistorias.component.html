@@ -36,7 +36,7 @@
                 <td>{{cita.atencion}}</td>
                 <td>{{cita.estado}}</td>
                 <td>
-                    <a class="btn btn-info" *ngIf="cita.estado=='ATENDIDO'" (click)="informacion(cita.id_cita)" ><i class='bx bx-info-circle'></i></a>
+                    <a class="btn btn-info" (click)="informacion(cita.id_cita)" ><i class='bx bx-info-circle'></i></a>
                 </td>
             </tr>
         </tbody>

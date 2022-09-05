@@ -56,28 +56,32 @@
                     </select>
                 </div>
                 <div class="col-md-6">
-                    <label class="col-md-12">Fecha de la cita</label>
-                    <input formControlName="fechaCita" [ngClass]="{ 'is-invalid': submitted && f.fechaCita.errors}" type="date" id="fechaCita" class="fadeIn second" name="fechaCita">
-                    <div *ngIf="submitted && f.fechaCita.errors" class="invalid-feedback">
-                        <div *ngIf="f.fechaCita.errors.required">*La fecha de la cita es obligatoria</div>
-                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <label class="col-md-12">Hora</label>
-                    <input formControlName="hora" [ngClass]="{ 'is-invalid': submitted && f.hora.errors}" type="time" id="hora" class="fadeIn second" name="hora" min="07:00" max="22:00" step="3600">
-                    <div *ngIf="submitted && f.hora.errors" class="invalid-feedback">
-                        <div *ngIf="f.hora.errors.required">*La hora es obligatoria</div>
-                     </div>
-                </div>
-                <div class="col-md-6">
                     <label class="col-md-12">Médico</label>
-                    <select formControlName="medico" [(ngModel)]="id_medico" class="custom-select">
+                    <select formControlName="medico" (change)="hora_cita()" [(ngModel)]="id_medico" class="custom-select">
                         <option value="" disabled selected>Selecciona un médico</option>
                         <option *ngFor="let medico of medicos" [value]="medico.id_medico">{{ medico.nombres }}</option>
                       </select>
                 </div>
+               
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="col-md-12">Fecha de la cita</label>
+                    <input onkeydown="return false" (change)="hora_cita()" formControlName="fechaCita" [ngClass]="{ 'is-invalid': submitted && f.fechaCita.errors}" type="date" id="fechaCita" class="fadeIn second" name="fechaCita">
+                    <div *ngIf="submitted && f.fechaCita.errors" class="invalid-feedback">
+                        <div *ngIf="f.fechaCita.errors.required">*La fecha de la cita es obligatoria</div>
+                     </div>
+                </div>
+                <div class="col-md-6">
+                    <label class="col-md-12">Hora</label>
+                    <input formControlName="hora" list="limittimeslist" [ngClass]="{ 'is-invalid': submitted && f.hora.errors}" type="time" id="hora" class="fadeIn second" name="hora" min="07:00" max="22:00" step="3600">
+                    <div *ngIf="submitted && f.hora.errors" class="invalid-feedback">
+                        <div *ngIf="f.hora.errors.required">*La hora es obligatoria</div>
+                    </div>
+                    <datalist formControlName="lista" id="limittimeslist">
+                    </datalist>
+                </div>
+                
                 
             </div>
             <input type="submit" class="fadeIn fourth" (click)="agendar()" value="Agendar cita">
