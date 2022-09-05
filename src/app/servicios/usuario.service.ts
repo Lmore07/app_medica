@@ -7,9 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class UsuarioService {
 
-  //Api: string = "https://app-medica-api.herokuapp.com/api";
+  Api: string = "https://app-medica-api.herokuapp.com/api";
   
-  Api: string = "http://localhost:3356/api";
+  //Api: string = "http://localhost:3356/api";
 
 
   constructor(public http: HttpClient) { }
