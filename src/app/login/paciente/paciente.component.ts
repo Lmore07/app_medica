@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-paciente',
@@ -78,9 +79,13 @@ export class PacienteComponent implements OnInit {
       text: texto
     })
   }
-  
+
     ngOnInit() {
-      
+      let fecha_max=moment().subtract(100, 'years').format("YYYY-MM-DD");
+      let fecha_minima=moment().subtract(4, 'years').format("YYYY-MM-DD");
+      let fecha_naci:HTMLInputElement=document.querySelector("input[name='fecha_naci']");
+      fecha_naci.min = fecha_max;
+      fecha_naci.max = fecha_minima;
       this.loginForm= this.formBuilder.group({
       correo: ['', [Validators.required]],
       password: ['', [Validators.required]],

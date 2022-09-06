@@ -82,8 +82,10 @@ export class DoctorComponent implements OnInit {
     ngOnInit() {
       let fecha=moment().format("YYYY-MM-DD");
       let fecha_minima=moment().subtract(18, 'years').format("YYYY-MM-DD");
+      let fecha_max=moment().subtract(100, 'years').format("YYYY-MM-DD");
       let fecha_naci:HTMLInputElement=document.querySelector("input[name='fecha_naci']");
       fecha_naci.max = fecha_minima;
+      fecha_naci.min = fecha_max;
       this.loginForm= this.formBuilder.group({
       correo: ['', [Validators.required]],
       password: ['', [Validators.required]],
