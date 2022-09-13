@@ -37,10 +37,7 @@ export class PerfilComponent implements OnInit {
     }
     //Campos llenos
     if (this.submitted) {
-      var regex = /^[0-9]+$/;
-      var regex_letras = /^[a-zA-Z]+$/;
-      if (regex.test(this.loginForm.value.cedula) && regex.test(this.loginForm.value.celular) && regex_letras.test(this.loginForm.value.apellidos) && regex_letras.test(this.loginForm.value.nombres) )  {
-        this.user_service
+         this.user_service
         .actualizar_datos({
           id: sessionStorage.getItem('id'),
           cedula: sessionStorage.getItem('ced'),
@@ -59,9 +56,28 @@ export class PerfilComponent implements OnInit {
             this.alertas('error', resp.mensaje, '');
           }
         });
-      }else{
-        this.alertas('error', "Verifique los campos ingresados", '');
-      }
+      
+    }
+  }
+
+  solo_letras(evento:any){
+    var regex_letras = /^[a-zA-Z\s]*$/;
+    if(regex_letras.test(evento.key)){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  solo_numeros(evento:any){
+    var regex = /^[0-9]+$/;
+    if(evento.keycode==8 || evento.keycode==46){
+      return true;
+    }
+    if(regex.test(evento.key)){
+      return true;
+    }else{
+      return false;
     }
   }
 
@@ -82,6 +98,11 @@ export class PerfilComponent implements OnInit {
     if(sessionStorage.getItem("login") == null) {
       this.router.navigate(['/inicio']);
     }
+    let fecha_max=moment().subtract(100, 'years').format("YYYY-MM-DD");
+      let fecha_minima=moment().subtract(4, 'years').format("YYYY-MM-DD");
+      let fecha_naci:HTMLInputElement=document.querySelector("input[name='fecha_naci']");
+      fecha_naci.min = fecha_max;
+      fecha_naci.max = fecha_minima;
     this.select = false;
     this.user_service
       .obtener_perfil(sessionStorage.getItem('ced'))
