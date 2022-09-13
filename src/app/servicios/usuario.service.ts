@@ -19,6 +19,7 @@ export class UsuarioService {
   }
 
   registro(datos:any): Observable<any> {
+    console.log(datos);
     return this.http.post(this.Api + "/usuarios/registro",datos);
   }
 
