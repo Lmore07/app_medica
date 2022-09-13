@@ -50,13 +50,13 @@ export class DoctorComponent implements OnInit {
   val_correo:any=true;
 
   valida_correo(evento:any){
-      var regex_correo = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      //var regex_correo = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      var regex_correo=/^[a-z]+@[a-z]+\.[a-z]+$/
       if(regex_correo.test(this.loginForm.value.correo)){
         this.val_correo=false;
       }else{
         this.val_correo=true;
       }
-      return true;
   }
 
   solo_letras(evento:any){
