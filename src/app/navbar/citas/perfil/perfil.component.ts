@@ -109,7 +109,7 @@ export class PerfilComponent implements OnInit {
       .obtener_perfil(sessionStorage.getItem('ced'))
       .subscribe((resp) => {
         console.log(resp);
-        let fecha = moment(resp.fecha_naci).format('YYYY-MM-DD');
+        let fecha =resp.fecha_naci;
         console.log(fecha);
         if (resp.especialidad == null) {
           resp.especialidad = 'a';
