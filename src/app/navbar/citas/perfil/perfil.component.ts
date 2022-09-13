@@ -37,6 +37,7 @@ export class PerfilComponent implements OnInit {
     }
     //Campos llenos
     if (this.submitted) {
+      console.log(this.loginForm.value.fecha_naci);
          this.user_service
         .actualizar_datos({
           id: sessionStorage.getItem('id'),
@@ -109,6 +110,7 @@ export class PerfilComponent implements OnInit {
       .subscribe((resp) => {
         console.log(resp);
         let fecha = moment(resp.fecha_naci).format('YYYY-MM-DD');
+        console.log(fecha);
         if (resp.especialidad == null) {
           resp.especialidad = 'a';
         }
