@@ -18,13 +18,18 @@ export class VercitasComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.ver_citas_turnos(sessionStorage.getItem("id")).subscribe(data => {
-      console.log(data);
       for (let i = 0; i < data.length; i++) {
         var fecha:String=data[i].fecha;
         data[i].fecha = fecha.substring(0, 10);
       }
       this.citas = data;
-      console.log(this.citas);
+      if(data.estado==0){
+        Swal.fire({
+          icon: "error",
+          title: "No tiene citas registradas",
+          text: ""
+        })
+      }
     });
   }
 
